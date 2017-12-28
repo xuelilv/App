@@ -164,7 +164,7 @@
                     var height = document.documentElement.clientHeight;
                     var new_width = 0;
                     if (width < height) {
-                        new_width = width * (1 - (width / height - 375 / 590));
+                        new_width = width * (1 - (width / height - 375 / 667));
                     } else {
                         new_width = width;
                     }
@@ -1009,6 +1009,8 @@
         };
         return proxy;
     }();
+
+    util.setHtmlFontSize();
 
     // 对外接口
     return {
