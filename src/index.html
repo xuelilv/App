@@ -46,15 +46,15 @@
             <span class="slide-pagination-bullet"></span>
         </nav>
     </div>
+    <script src="./assets/lib/hammer/hammer.min.js"></script>
     <script src="./assets/js/common.js"></script>
     <script>
         Allpay.cssLoad('./assets/component/slide/slide.css');
-        Allpay.use('file:///E:/test/ReactApp/src/assets/component/slide/slide.js', function(Slide) {
+        Allpay.use('../assets/component/slide/slide.js', function(Slide) {
             var mySlide = new Slide({
                 el: '.slide-contain',
                 time: 1500
             });
-            mySlide.slideTo(1);
         });
     </script>
 </body>

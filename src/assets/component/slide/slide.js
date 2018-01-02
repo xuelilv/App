@@ -3,6 +3,7 @@ Allpay.define(function() {
     var slide = function(options) {
         if (!options.el) return;
         var self = this;
+        this.auto = options.auto || false;
         this.autoTime = options.time || 1500;
         this.el = document.querySelector(options.el);
         this.elWidth = Allpay.util.getStyles(this.el, 'width');
@@ -48,25 +49,33 @@ Allpay.define(function() {
                 addClass(self.bullets[index]);
             }
         };
+        var addEvent = function() {
+            var hammer = new Hammer($wrapper);
+            hammer.on('pan', function(ev) {
+                var rate = Math.abs(ev.deltaX/self.elWidth);
+                var currX = parseFloat(Allpay.util.getStyles($wrapper, 'transform').substring(7).split(',')[4]),
+                    dx = ev.deltaX;
+                //currX && (dx += currX);
+                console.log(currX, dx, ev.deltaX);
+                $wrapper.style.transform = 'translate3d(' + dx + 'px, 0, 0)';
+            });
+        }(); 
         $wrapper.addEventListener(transitionEnd, function(e) {
             $wrapper.style.transitionDuration = '0ms';
-        }, false);
-        $wrapper.addEventListener('touchmove', function(e) {
-
         }, false);
         eventBus.subscribe('slideTo', function(index) {
             i = index;
             addTransform(index);
         });
         timer && clearInterval(timer);
-        timer = setInterval(function() {
+        this.auto && (timer = setInterval(function() {
             if (i < slidesCount) {
                 addTransform(i);
                 i++;
             } else if (i === slidesCount) {
                 i = 0;
             }
-        }, this.autoTime);
+        }, this.autoTime));
     };
 
     slide.prototype.slideTo = function(index) {
