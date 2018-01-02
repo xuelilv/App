@@ -1,0 +1,45 @@
+body {
+    background: none;
+}
+
+.header {
+    position: relative;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    background-color: #007ACC;
+    text-align: center;
+}
+
+.header .back {
+    position: absolute;
+    left: 4%;
+    margin-top: 1.1rem;
+}
+
+.header .title {
+    display: inline-block;
+    color: #fff;
+    font-size: 1.7rem;
+}
+
+.header button.ap_btn {
+    position: absolute;
+    right: 0;
+    font-size: 1.7rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.footer .item {
+    flex-grow: 1;
+    height: 100%;
+}

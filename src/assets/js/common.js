@@ -164,11 +164,11 @@
                     var height = document.documentElement.clientHeight;
                     var new_width = 0;
                     if (width < height) {
-                        new_width = width * (1 - (width / height - 375 / 667));
+                        new_width = width * (1 - (width / height - 375 / 590));
                     } else {
-                        new_width = width;
+                        new_width = 375;
                     }
-                    var fontSize = new_width / 6.4;
+                    var fontSize = new_width / 37.5;
                     document.documentElement.style.fontSize = fontSize + "px";
                 }
 
@@ -617,10 +617,10 @@
     }
     Router.prototype.getUrl = function() {
         var path = window.location.hash.replace(/^#/g, '');
-        var urlObj = new ParseUrl(path);
+        var pathArr = path.split('?');
         this.url = {
-            pathname: urlObj.url.pathname.replace(/[\s*|^\/|$\/]/g, ''),
-            query: util.getURLQuery(urlObj.url)
+            pathname: pathArr[0].replace(/[\s*]|^\/|\/$/g, ''),
+            query: util.getURLQuery({ search: pathArr[1] ? ('?' + pathArr[1]) : '' })
         };
     };
     Router.prototype.map = function(pathObj) {
@@ -724,7 +724,7 @@
             var params = arguments;
             var body = null,
                 success, error, options;
-            if (params[1]) {
+            if (util.isPlainObject(params[1])) {
                 body = params[1];
                 success = params[2];
                 error = params[3];
@@ -743,7 +743,7 @@
                 success: success || function() {},
                 error: error || function() {}
             }, options);
-            eventBus.update('httpIntercept', args);
+            eventBus.subscriber['httpIntercept'] && eventBus.update('httpIntercept', args);
             ajax(args);
         }
     });
@@ -827,17 +827,18 @@
     }
 
     /**
-     * js 简单模块加载器
+     * 简单模块加载器 支持.js .css
      */
     var module = {
         _modules: {},
         _configs: {
             // 用于拼接相对路径
             basePath: (function(path) {
+                var host = location.origin || location.host;
                 if (path.charAt(path.length - 1) === '/') {
                     path = path.substr(0, path.length - 1);
                 }
-                return path.substr(path.indexOf(location.host) + location.host.length + 1);
+                return path.substr(path.indexOf(host) + host.length + 1);
             })(location.href),
             // 用于拼接相对根路径
             host: location.protocol + '//' + location.host + '/'
@@ -866,11 +867,18 @@
         for (i = 0; i < uris.length; i++) {
             if (!module.hasModule(uris[i])) {
                 module.pushModule(uris[i]);
+                var isCss = (/.css$/g).test(uris[i]),
+                    isJs = (/.js$/g).test(uris[i]);
                 // 开始加载
-                var nsc = document.createElement('script');
-                nsc.src = uris[i];
-                nsc.setAttribute('async', 'async');
-                document.body.appendChild(nsc);
+                if (isCss) {
+                    cssLoad(uris[i]);
+                } else if (isJs) {
+                    var nsc = document.createElement('script');
+                    nsc.src = uris[i];
+                    nsc.setAttribute('async', 'async');
+                    document.body.appendChild(nsc);
+                }
+
             }
         }
     };
@@ -1010,6 +1018,16 @@
         return proxy;
     }();
 
+    /**
+     * Page 类
+     */
+    function Page(options) {
+        this.el = options.el ? document.querySelector(options.el) : document.createElement('div'); // 挂载元素
+        this.template = options.template || '';
+        this.el.innerHTML = this.template;
+    }
+
+    var $loading = document.getElementById('DialogLoading');
     util.setHtmlFontSize();
 
     // 对外接口
@@ -1024,6 +1042,15 @@
         observer: observer,
         define: define,
         use: module.use,
-        http: http
+        http: http,
+        Page: function(options) {
+            return new Page(options);
+        },
+        loading: function() {
+            $loading.show();
+        },
+        closeLoading: function() {
+            $loading.hide();
+        }
     };
 }));
