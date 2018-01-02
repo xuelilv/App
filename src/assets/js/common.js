@@ -92,8 +92,9 @@
                 return len ? ('?' + query.replace(/^&/g, '')) : '';
             },
             getStyles: function(el, key) {
-                var styles = document.defaultView.getComputedStyle(el, null);
-                return parseInt(styles.getPropertyValue(key) || styles[key], 10);
+                var styles = document.defaultView.getComputedStyle(el, null),
+                    value = styles.getPropertyValue(key) || styles[key];
+                return parseInt(value) || value;
             },
             cutString: function(str, start, end, replace) {
                 if (this.isString(str)) {
