@@ -2,13 +2,10 @@
     var router = new Allpay.Router();
     router.map({
         'index': function() {
-            Allpay.http.get('./assets/pages/index/index.html', function(res) {
-                Allpay.use('../assets/pages/index/index.css');
-                Allpay.Page({
-                    el: '#contain',
-                    template: res
-                });
-            });
+            Allpay.use('../assets/pages/index/index.js');
+        },
+        'search': function() {
+            Allpay.use('../assets/pages/search/index.js');
         }
     });
     setTimeout(function() {

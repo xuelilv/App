@@ -694,9 +694,9 @@
             init.onreadystatechange = function() {
                 if (init.readyState == 4) {
                     if ((init.status >= 200 && init.status < 300) || init.status === 304 || init.status === 0) {
-                        return successBack(init.responseText);
+                        return successBack(init.responseText, init, args);
                     } else {
-                        return errorBack(init.status);
+                        return errorBack(init.status, init, args);
                     }
                 }
             };
@@ -828,7 +828,7 @@
     }
 
     /**
-     * 简单模块加载器 支持.js .css
+     * 简单模块加载器 支持.js/.css/.html
      */
     var module = {
         _modules: {},
@@ -869,7 +869,8 @@
             if (!module.hasModule(uris[i])) {
                 module.pushModule(uris[i]);
                 var isCss = (/.css$/g).test(uris[i]),
-                    isJs = (/.js$/g).test(uris[i]);
+                    isJs = (/.js$/g).test(uris[i]),
+                    isHtml = (/.html$/g).test(uris[i]);
                 // 开始加载
                 if (isCss) {
                     cssLoad(uris[i]);
@@ -878,6 +879,11 @@
                     nsc.src = uris[i];
                     nsc.setAttribute('async', 'async');
                     document.body.appendChild(nsc);
+                } else if (isHtml) {
+                    http.get(uris[i], function(res, xhr, args) {
+                        module._modules[args.url] = res;
+                        module.proxy.emit(args.url);
+                    });
                 }
 
             }
@@ -1023,9 +1029,11 @@
      * Page 类
      */
     function Page(options) {
-        this.el = options.el ? document.querySelector(options.el) : document.createElement('div'); // 挂载元素
+        var fragment = document.createElement('div');
+        this.el = options.el ? document.querySelector(options.el) : null; // 挂载元素
         this.template = options.template || '';
-        this.el.innerHTML = this.template;
+        fragment.innerHTML = this.template;
+        this.el && fragment.childNodes.length && document.body.replaceChild(fragment.childNodes[0], this.el);
     }
 
     var $loading = document.getElementById('DialogLoading');

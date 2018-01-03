@@ -14,6 +14,7 @@ body {
     position: absolute;
     left: 4%;
     margin-top: 1.1rem;
+    border-color: #fff;
 }
 
 .header .title {
@@ -22,24 +23,48 @@ body {
     font-size: 1.7rem;
 }
 
-.header button.ap_btn {
-    position: absolute;
-    right: 0;
+.header .search {
     font-size: 1.7rem;
+    position: absolute;
+    right: 3%;
+    color: #fff;
 }
 
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 3rem;
+    height: 5rem;
     display: -webkit-flex;
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #ddd;
+    color: #939094;
+    z-index: 1;
+    font-size: 1.2rem;
 }
 
 .footer .item {
     flex-grow: 1;
     height: 100%;
+    text-align: center;
+}
+
+.footer .setting {
+    padding-top: 5px;
+}
+
+.footer .item.setting img {
+    width: 27px;
+}
+
+.footer .item img {
+    width: 32px;
+}
+
+.footer .item:last-child {
+    border: none;
 }

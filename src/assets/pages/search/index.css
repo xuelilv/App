@@ -1,0 +1,44 @@
+.component-listPage .search {
+    width: 90%;
+    height: 30px;
+    margin: 0 auto 15px auto;
+    position: relative;
+    font-size: 18px;
+}
+
+.component-listPage .search input {
+    border: 1px solid #A8A8AA;
+    outline: none;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    text-align: left;
+    padding-left: 45%;
+}
+
+.component-listPage .search .icon {
+    position: absolute;
+    left: 37%;
+    top: -1px;
+    height: 30px;
+    line-height: 28px;
+    color: #BABABA;
+}
+
+.component-listPage .search input:focus {
+    text-align: left;
+    padding-left: 10%;
+}
+
+.component-listPage .search input:focus+.icon {
+    left: 3%;
+}
+
+.component-listPage .search .clear {
+    position: absolute;
+    right: 3%;
+    top: -2px;
+    height: 30px;
+    line-height: 30px;
+    color: #BABABA;
+}

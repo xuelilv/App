@@ -1,0 +1,9 @@
+<nav class="header">
+    <i class="ap_arrow_left back"></i>
+    <div class="search">
+        <input type="text" v-bind:placeholder="searchPlaceholderText" ref="group" v-model="searchText">
+        <i class="icon ap_icon_search"></i>
+        <i class="clear ap_icon_clear" v-show="searchText !== ''"></i>
+    </div>
+    <span>搜索</span>
+</nav>
