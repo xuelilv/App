@@ -49,17 +49,6 @@ Allpay.define(function() {
                 addClass(self.bullets[index]);
             }
         };
-        var addEvent = function() {
-            var hammer = new Hammer($wrapper);
-            hammer.on('pan', function(ev) {
-                var rate = Math.abs(ev.deltaX/self.elWidth);
-                var currX = parseFloat(Allpay.util.getStyles($wrapper, 'transform').substring(7).split(',')[4]),
-                    dx = ev.deltaX;
-                //currX && (dx += currX);
-                console.log(currX, dx, ev.deltaX);
-                $wrapper.style.transform = 'translate3d(' + dx + 'px, 0, 0)';
-            });
-        }(); 
         $wrapper.addEventListener(transitionEnd, function(e) {
             $wrapper.style.transitionDuration = '0ms';
         }, false);

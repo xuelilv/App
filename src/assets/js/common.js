@@ -1029,11 +1029,9 @@
      * Page 类
      */
     function Page(options) {
-        var fragment = document.createElement('div');
         this.el = options.el ? document.querySelector(options.el) : null; // 挂载元素
         this.template = options.template || '';
-        fragment.innerHTML = this.template;
-        this.el && fragment.childNodes.length && document.body.replaceChild(fragment.childNodes[0], this.el);
+        this.el && (this.el.innerHTML = this.template);
     }
 
     var $loading = document.getElementById('DialogLoading');

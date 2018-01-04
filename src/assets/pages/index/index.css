@@ -2,7 +2,7 @@ body {
     background: none;
 }
 
-.header {
+.page-index .header {
     position: relative;
     height: 3.5rem;
     line-height: 3.5rem;
@@ -10,27 +10,28 @@ body {
     text-align: center;
 }
 
-.header .back {
+.page-index .header .back {
     position: absolute;
     left: 4%;
     margin-top: 1.1rem;
     border-color: #fff;
 }
 
-.header .title {
+.page-index .header .title {
     display: inline-block;
     color: #fff;
     font-size: 1.7rem;
+    line-height: 3.5rem;
 }
 
-.header .search {
+.page-index .header .search {
     font-size: 1.7rem;
     position: absolute;
     right: 3%;
     color: #fff;
 }
 
-.footer {
+.page-index .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -47,24 +48,40 @@ body {
     font-size: 1.2rem;
 }
 
-.footer .item {
+.page-index .footer .item {
     flex-grow: 1;
     height: 100%;
     text-align: center;
 }
 
-.footer .setting {
+.page-index .footer .setting {
     padding-top: 5px;
 }
 
-.footer .item.setting img {
+.page-index .footer .item.setting img {
     width: 27px;
 }
 
-.footer .item img {
+.page-index .footer .item img {
     width: 32px;
 }
 
-.footer .item:last-child {
+.page-index .footer .item:last-child {
     border: none;
+}
+
+.page-index div.slide-contain {
+    height: 200px;
+}
+
+.slide-item:nth-child(1) {
+    background-color: #007ACC;
+}
+
+.slide-item:nth-child(2) {
+    background-color: #939094;
+}
+
+.slide-item:nth-child(3) {
+    background-color: greenyellow;
 }
