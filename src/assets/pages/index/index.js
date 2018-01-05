@@ -9,7 +9,7 @@ Allpay.define(['../assets/pages/index/index.html', '../assets/component/slide/sl
         var mySlide = new Slide({
             el: '.slide-contain',
             time: 1500,
-            auto: false
+            auto: true
         });
 
     };
