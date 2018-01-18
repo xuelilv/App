@@ -19,8 +19,9 @@ Allpay.define(function() {
     slide.prototype.animate = function() {
         var self = this;
         var slidesCount = this.slides.length,
-            i = 1,
+            i = 0,
             timer,
+            dx = 0,
             $wrapper = this.el.querySelector('.slide-wrapper');
         var transitionEnd = (function() {
             var transEndEventNames = {
@@ -49,22 +50,52 @@ Allpay.define(function() {
                 addClass(self.bullets[index]);
             }
         };
+        var startAuto = function() {
+            self.auto && (timer = setInterval(function() {
+                if (i < slidesCount - 1) {
+                    addTransform(i);
+                    i++;
+                } else if (i === slidesCount - 1) {
+                    addTransform(i);
+                    i = 0;
+                }
+            }, self.autoTime));
+        };
         $wrapper.addEventListener(transitionEnd, function(e) {
             $wrapper.style.transitionDuration = '0ms';
+        }, false);
+        $wrapper.addEventListener('touchstart', function() {
+            clearInterval(timer);
+        }, false);
+        $wrapper.addEventListener('drag', function(e) {
+            if (dx > 0 && i === slidesCount - 1) return;
+            dx = e.detail.x;
+            $wrapper.style.transform = 'translate3d(-' + (self.elWidth * i + dx) + 'px, 0, 0)';
+            $wrapper.style.transitionDuration = '0ms';
+        }, false);
+        $wrapper.addEventListener('touchend', function() {
+            var half = Math.abs(dx) > self.elWidth / 2;
+            if (half) {
+                if (dx > 0 && i < slidesCount - 1) {
+                    addTransform(i + 1);
+                    i = i + 1;
+                }
+                if (dx < 0 && i > 0) {
+                    addTransform(i - 1);
+                    i = i - 1;
+                }
+            } else {
+                addTransform(i);
+            }
+            dx = 0;
+            startAuto();
         }, false);
         eventBus.subscribe('slideTo', function(index) {
             i = index;
             addTransform(index);
         });
         timer && clearInterval(timer);
-        this.auto && (timer = setInterval(function() {
-            if (i < slidesCount) {
-                addTransform(i);
-                i++;
-            } else if (i === slidesCount) {
-                i = 0;
-            }
-        }, this.autoTime));
+        startAuto();
     };
 
     slide.prototype.slideTo = function(index) {
