@@ -2,17 +2,13 @@
     var router = new Allpay.Router();
     router.map({
         'index': function() {
-            Allpay.use('../assets/pages/index/index.js', function(fn) {
-                fn();
-            });
+            Allpay.use('../assets/pages/index/index.js');
         },
         'search': function() {
-            Allpay.use('../assets/pages/search/index.js', function(fn) {
-                fn();
-            });
+            Allpay.use('../assets/pages/search/index.js');
+        },
+        'chart': function() {
+            Allpay.use(['../assets/lib/SVG/svg.js', '../assets/pages/chart/index.js']);
         }
     });
-    setTimeout(function() {
-        window.location.hash = 'index';
-    }, 1000);
 })();

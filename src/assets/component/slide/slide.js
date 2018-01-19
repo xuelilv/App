@@ -68,7 +68,7 @@ Allpay.define(function() {
             clearInterval(timer);
         }, false);
         $wrapper.addEventListener('drag', function(e) {
-            if (dx > 0 && i === slidesCount - 1) return;
+            if (dx < 0 && i === slidesCount - 1) return;
             dx = e.detail.x;
             $wrapper.style.transform = 'translate3d(-' + (self.elWidth * i + dx) + 'px, 0, 0)';
             $wrapper.style.transitionDuration = '0ms';
@@ -76,11 +76,11 @@ Allpay.define(function() {
         $wrapper.addEventListener('touchend', function() {
             var half = Math.abs(dx) > self.elWidth / 2;
             if (half) {
-                if (dx > 0 && i < slidesCount - 1) {
+                if (dx < 0 && i < slidesCount - 1) {
                     addTransform(i + 1);
                     i = i + 1;
                 }
-                if (dx < 0 && i > 0) {
+                if (dx > 0 && i > 0) {
                     addTransform(i - 1);
                     i = i - 1;
                 }

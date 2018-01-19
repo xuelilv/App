@@ -5,6 +5,5 @@ Allpay.define(['../assets/pages/search/index.html'], function(res) {
             el: '#contain',
             template: res
         });
-    };
-
+    }();
 });

@@ -28,8 +28,8 @@ Allpay.define(function() {
             var touches = e.changedTouches[0],
                 endTx = touches.clientX,
                 endTy = touches.clientY,
-                deltaX = startTx - endTx,
-                deltaY = startTy - endTy;
+                deltaX = endTx - startTx,
+                deltaY = endTy - startTy;
             fireEvent(e.target, 'drag', {
                 x: deltaX,
                 y: deltaY
@@ -40,8 +40,8 @@ Allpay.define(function() {
             var touches = e.changedTouches[0],
                 endTx = touches.clientX,
                 endTy = touches.clientY,
-                deltaX = Math.abs(startTx - endTx),
-                deltaY = Math.abs(startTy - endTy);
+                deltaX = Math.abs(endTx - startTx),
+                deltaY = Math.abs(endTy - startTy);
             if (deltaX < 30 && deltaY < 30) {
                 fireEvent(e.target, 'tap');
             } else {

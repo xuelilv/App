@@ -12,5 +12,5 @@ Allpay.define(['../assets/pages/index/index.html', '../assets/component/slide/sl
             auto: true
         });
 
-    };
+    }();
 });
