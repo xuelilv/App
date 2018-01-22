@@ -1,0 +1,51 @@
+<div class="view_setProfile">
+	<ul class="clear oul">
+			<li><span class = "span_key fl" code = "1">姓名</span><span class = "span_value fl"><%= name %></span><input type="text" id="userName" class = "profile_icon" placeholder="请输入姓名" /></li>
+			<li><span class = "span_key fl" code = "2">手机号</span><span class = "span_value fl"><%= phone %></span><input type="number" id="PhoneNum" name="PhoneNum" class = "profile_icon" pattern="^\d{11}" placeholder="请输入联系电话"/></li>
+			<li class= "li_address" id="addressDetail">
+				<span class="radio"><i></i><input type="radio" name="content" class="radio_server" id="radio_address" / ></span>
+				<span class = "span_key fl" code = "3">滤芯邮寄地址</span><span class = "span_value span_length1 fl"><%= address %></span>
+				<input type="text" class = "profile_icon select_address" readonly="readonly" id="select_address"/>
+				<p class="address_p" style="display: none" id="address_content">
+					<label class="label_address" for="address_input">详细地址</label><input type="text" class="address_input" name="address_input" id="address_input"/>
+				</p>
+				
+			</li>
+			<li class = "li_address errorDetail">
+				<span class="radio"><i class="innerCir"></i><input type="radio" name="content" id="radio_error" class="radio_server checked" /></span>
+				<span class = "span_key fl span_tell" code = "4">故障描述</span>
+				<span class = "span_value span_length2 fl error_content"><textarea name="" id="error_content" cols="30" rows="10" placeholder="请输入故障描述"></textarea></span>
+			</li>
+	</ul>
+	<div class="space"></div>
+	<div class="save_btn serviceBtn"><a href="javascript:;">申请维修保养</a></div>
+	<div class="select" style="display: none">
+		<div class="mask"></div>
+		<div class="scroll">
+			<div class="content">
+				<div class="province">
+					<div class="swiper-container" id="provinceSwip">
+						<div class="swiper-wrapper" id="wrap-province">
+            			</div>
+					</div>
+				</div>
+				<div class="city">
+					<div id="citySwip">
+						<div class="swiper-wrapper" id="wrap-city">
+            			</div>
+					</div>
+				</div>
+				<div class="area">
+					<div id="areaSwip">
+						<div class="swiper-wrapper" id="wrap-area">
+            			</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn">
+				<div id="scroll_save">保存</div>
+			</div>
+<!-- 			<div style="height:1.5rem"></div> -->
+		</div>
+	</div>
+</div>

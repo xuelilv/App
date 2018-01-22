@@ -1,0 +1,60 @@
+<div id="filterHealth">
+    <div class="filterHealthTitle">
+        <div class="healthState">滤芯健康状况</div>
+        <span class="spanLine">总净水量：</span><span id="total"><%= result[0].total %></span><span class="unit">L</span>
+    </div>
+    <div id="allFilter" class="displayBox">
+        <% var firstHealth = null %>
+        <% _.each(result, function (val,index){ %>
+            <% var per= val.surplusPct %>
+            <% var color="",isWarn=false%>
+            <%
+                if(index == 0){
+                    firstHealth = val
+                }
+                if(per<10){
+                    color="#FFD200";
+                    isWarn=true;
+                }else{
+                    color="#007cc9";
+                    isWarn=false;
+                }
+            %>
+            <div class="filter displayBox boxFlex" id="<%= val.id %>" data-warn="<%= isWarn%>" data-tot="<%= val.total %>">
+                <p class="num<%= index+1%> numPosition"><%= index+1%></p>
+                <div class="item item<%= index+1%> <%if (index == 0) {%>boxShadow<%}%>" style="background-color: <%=color%>">
+                    <span class="itemSpan" style="height:<%= per %>%"></span>
+                </div>
+                <div class="volume">
+                    <div class="volumeNum"><%= val.filterSurplusWater %>L</div>
+                    <div class="volumePer">(<%= per%>%)</div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+    <div class="volumeTableTitle">
+        <div>剩余</div>
+        <div>净水量</div>
+    </div>
+    <div class="filterMsg">
+        <div id="filter">
+            <p id="explanationTit">1号滤芯：</p>
+            <p id="explanationTxt"><%- firstHealth.explanation%></p>
+        </div>
+    </div>
+    <div class="resetBg">
+        <div id="resetBtn">重置滤芯</div>
+    </div>
+    <div id="popUpBg" style="display:none">
+        <div class="popUpWindow">
+            <div class="displayBox lines" id="dialog">
+                <div class="boxFlex lineOne">确认要重置<span>1</span>号滤芯吗？</div>
+                <div class="boxFlex lineTwo">可将净水量回复到100%。</div>
+            </div>
+            <div class="displayBox popBtn">
+                <div class="boxFlex cancelBtn">取消</div>
+                <div class="boxFlex sureBtn">确认</div>
+            </div>
+        </div>
+    </div>
+</div>

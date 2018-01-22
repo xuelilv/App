@@ -1,0 +1,53 @@
+<div id="control" data-did="<%= id%>">
+    <div class="alert animation" id="Alert">
+        <div id="txtAn" class="txtAn">
+            <p class="alertTxt" id="txt1"></p>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="headWrap">
+        <div class="deviceName">
+            <span class="<% if (isOnline == 'n') {%> offlineName <%}%>"><%- name%></span>
+            <% if (isOnline == "y") {%>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="80" height="64" viewBox="0 0 80 64">
+                <% var state=Math.floor(signal) %>
+ <!--           <path d="M40 36c6.617 0 12.617 2.692 16.963 7.037l-5.654 5.654c-2.897-2.897-6.897-4.692-11.308-4.692s-8.411 1.794-11.308 4.692l-5.654-5.654c4.346-4.346 10.346-7.037 16.963-7.037z" class="signalState <%if(state>3){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal4"></path>
+				<path d="M11.716 31.716c7.555-7.555 17.6-11.716 28.284-11.716s20.729 4.161 28.284 11.716l-5.657 5.657c-6.044-6.044-14.080-9.373-22.627-9.373s-16.583 3.328-22.627 9.373l-5.657-5.657z" class="signalState <%if(state>2){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal3"></path>
+				<path d="M61.799 8.402c6.669 2.821 12.657 6.858 17.799 12v0l-5.657 5.657c-9.066-9.066-21.12-14.059-33.941-14.059s-24.875 4.993-33.941 14.059l-5.657-5.657c5.142-5.142 11.13-9.179 17.799-12 6.907-2.921 14.241-4.402 21.799-4.402s14.892 1.481 21.799 4.402z" class="signalState <%if(state>1){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal2"></path>
+				<path d="M36 56c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4z" class="signalState <%if(state>0){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal1"></path>
+-->
+                <path d="M14 44h-8c-1.1 0-2 0.9-2 2v16c0 1.1 0.9 2 2 2h8c1.1 0 2-0.9 2-2v-16c0-1.1-0.9-2-2-2z" class="signalState <%if(state>0){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal1" />
+                <path d="M27 38h-8c-1.1 0-2 0.9-2 2v22c0 1.1 0.9 2 2 2h8c1.1 0 2-0.9 2-2v-22c0-1.1-0.9-2-2-2z" class="signalState <%if(state>1){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal2" />
+                <path d="M40 32h-8c-1.1 0-2 0.9-2 2v28c0 1.1 0.9 2 2 2h8c1.1 0 2-0.9 2-2v-28c0-1.1-0.9-2-2-2z" class="signalState <%if(state>2){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal3" />
+                <path d="M53 26h-8c-1.1 0-2 0.9-2 2v34c0 1.1 0.9 2 2 2h8c1.1 0 2-0.9 2-2v-34c0-1.1-0.9-2-2-2z" class="signalState <%if(state>3){ %>hasSignal <% }else{ %>noSignal <% }%>" id="singal4" />
+            </svg>
+                <% }%>
+                    <% if (isOnline == "n") {%>
+                        <img src="./images/fallline.png" class="offlineSign" />
+                        <% }%>
+        </div>
+    </div>
+    <div id="waterChart"></div>
+    <!-- <div class="oldTds">原TDS：<span><%= TDSIn%></span>ppmm</div> -->
+    <footer class="foot">
+        <div class="water" id="water">
+            <% if (isOnline == "y") {%>
+                <p>
+                    <%= dayWater || 0%>L</p>
+                <% }%>
+                    <% if (isOnline == "n") {%>
+                        <p><span class="offlineWater">--</span>L</p>
+                        <% } %>
+                            <p>今日净水量</p>
+        </div>
+        <div class="state" id="state">
+            <% if (isOnline == "y") {%>
+                <p>健康</p>
+                <% }%>
+                    <% if (isOnline == "n") {%>
+                        <p class="offlineState">未知</p>
+                        <% }%>
+                            <p>滤芯状态</p>
+        </div>
+    </footer>
+</div>

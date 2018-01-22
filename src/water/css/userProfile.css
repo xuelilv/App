@@ -1,0 +1,34 @@
+.view_content{width: 100%;height: 100%;position: relative;background: #fbfbfb;overflow: auto;}
+.input_data{background: #e9e9e9;padding: 5% 5% 10% 5%;height: auto;}
+.form input{border:1px solid #ddd;border-radius: 4px 4px;-webkit-border-radius:4px 4px;}
+.form .uinput{margin: 3% 0 5%;width: 100%;height: 36px;padding-left: 5px;}
+.form .pSize{font-size: 1.6rem}
+.home_people_num{width: 100%;height: 30%;position: relative;}
+.home_people_num p{display: block;line-height: 36px;font-size: 1.6rem}
+.home_people_num input{height: 38px;width: 5rem;position: absolute;right: 46px;top:0;text-align: center;}
+.home_people_num i{font-style: normal;line-height: 36px;position: absolute;right: 5px;top:10px;display: block;
+width: 36px;height: 36px;text-align: center;font-size: 38px;border: 1px solid #1c82ca;color: #1c82ca;background: white;
+border-radius: 4px 4px;-webkit-border-radius:4px 4px;}
+.home_people_num i:nth-of-type(1){right: 110px;top:0;line-height: 38px;font-size: 22px;}
+.home_people_num i:nth-of-type(2){right: 5px;top:0;}
+
+.set_sex{display: box;display: -webkit-box;margin-bottom: 5%}
+.set_sex .pSize{width: 20%;}
+.set_sex .check_sex{box-flex:1.0;-webkit-box-flex:1.0;position: relative;}
+.set_sex .check_sex a{display: inline-block;width: 50%;text-align: center;text-indent: 2rem;line-height: 25px;}
+.set_sex .check_sex i{display: block;width: 1.8rem;height: 1.8rem;background: white;position: absolute;top:1px;
+border-radius: 50% 50%;-webkit-border-radius:50% 50%;}
+.set_sex .check_sex i:nth-of-type(1){left:12%;}
+.set_sex .check_sex i:nth-of-type(2){left:62%;}
+.set_sex .check_sex .on{background: #1c82ca}
+
+.form textarea{width: 100%;resize:none;background: white;height: 36px;border: 1px solid #ddd;overflow-y:hidden;
+	padding: 5px 5px; line-height: 25px;border-radius: 4px 4px;-webkit-border-radius:4px 4px;margin-top: 9px;
+ }
+.form .on{background:white;border: 1px solid #ddd;height: 60px;line-height: 20px;padding: 8px 5px 0px;}
+.form em{font-style: normal;color: #1c82ca}
+
+.save_btn{width: 100%;height:6.8rem;overflow: hidden;background: #fbfbfb}
+.save_btn a{display: block;border:1px solid #1c82ca;width: 60%;height: 42px;margin-left: 20%;position:relative;top:50%;
+ 	margin-top: -21px;text-align: center;line-height: 42px;color:#1c82ca;border-radius: 4px 4px;-webkit-border-radius:4px 4px;
+ 	font-size: 1.6rem;}

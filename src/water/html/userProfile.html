@@ -1,0 +1,24 @@
+<div class="view_content">
+	<div class="input_data">
+	<form class="form">
+		<p class="pSize"><em>姓名 </em>*<span class = "nameError hide">姓名不能包含特殊字符</span></p><input type="text" class="name uinput" placeholder= "请输入姓名" value = "<%= name %>"><br/>
+		<div class="set_sex">
+			<p class="pSize"><em>性别 </em>*</p>
+			<p class="check_sex"><a href="javascript:;" class= "man">男</a><i class = "<% if(sex == 1 || sex == ""){%>on<%}else{%>''<%}%>"></i><a href="javascript:;" class= "woman">女</a><i class = "<% if(sex == 2){%>on<%}else{%>''<%}%>"></i></p>
+		</div>
+		<p class="pSize"><em>手机号 </em>*<span class = "phoneError hide">手机号输入错误,请重新输入</span></p><input type="text" class = "phone_num uinput" placeholder= "请输入手机号" name = "user_mobile" value = "<%= mobile %>"><br/>
+		<p class="pSize"><em>邮箱或QQ </em>*<span class = "emailError hide">邮箱或QQ输入错误,请重新输入</span></p><input type="text" class = "emailType uinput" placeholder= "请输入邮箱或QQ" value = "<%= email %>"><br/>
+		<P class="pSize"><em>滤芯邮寄地址 </em>*<span class = "addressError hide">地址不能为空</span></P>
+			<p class="Prov uinput">
+				<select class="select" id="s1"></select>
+				<select class="select" id="s2"></select>
+				<select class="select" id="s3"></select>
+			</p>
+		<input id="detailAddress" placeholder= "请输入收货详细地址" class="detailAddress textBlur <% if(!address == ""){%>on<%}%>" value="<%= address %>" />
+		<div class="home_people_num">
+			<p><em>家庭人口数量  </em>*</p><i class = "less">—</i><input type="text" class = "people_num" value="<%= familySize %>" readonly="readonly"><i class = "add_ed">+</i>
+		</div>
+	</form>
+	</div>
+	<div class="save_btn"><a href="javascript:;">保存</a></div>
+</div>

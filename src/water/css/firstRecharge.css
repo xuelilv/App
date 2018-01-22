@@ -1,0 +1,16 @@
+.view_firstRecharge{width: 100%;height: 100%;display: box;display: -webkit-box;box-orient:vertical;-webkit-box-orient:vertical;}
+.firstRecharge{box-flex:1.0;-webkit-box-flex:1.0;background: #0076c5}
+.nowRecharge{height:8rem;width: 100%;background: #fbfbfb;position: relative;}
+.recharge_logo{width: 100%;height: auto;overflow: hidden;}
+.recharge_logo img{width: 35%;position: relative;margin-left:-17.5%;left:50%;margin-top: 10%;}
+.firstRecharge p{text-align: center;color: white;}
+.firstPay{width: 60%;margin:1rem auto -1rem;position: relative;padding-left: 3%}
+.firstPay a{font-size: 96px;color: white;}
+.firstPay i{font-style: normal;color: white;position: relative;top:-4rem;color: yellow;font-size: 1.6rem}
+.firstPay span{font-style: normal;color: #3390be;position: absolute;top:6.5rem;right:0.6rem;padding: 1% 3%;background: yellow;
+border-radius: 4px 4px;-webkit-border-radius:4px 4px;}
+.firstPay .express{width: 100%;height: 1px;background: #208fd1;position: relative;top:-2.2rem;}
+
+.now_Recharge,.now_qrcode_btn{width: 60%;border-radius: 6px 6px;-webkit-border-radius:6px 6px;border: 1px solid #3c93d2;color: #3c93d2;text-align: center;
+line-height: 42px;height: 42px;margin:0 auto;display: block;position: absolute;margin-top:-21px;top:50%;left:20%;font-size: 1.8rem}
+

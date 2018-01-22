@@ -1,0 +1,40 @@
+.view_reSuccess{width: 100%;height: 100%;}
+.view_reSuccess p {text-align: left;font-size: 1.6rem;}
+.account_money{width: 100%;padding: 1.5rem 5% 2.7rem;background: #0183cc;color: white}
+.account_money span{font-size: 96px;color: white;}
+.account_money i{color: yellow;font-style: normal;font-size: 1.6rem;position: relative;top: -5rem;}
+.money_type{padding: 1.5rem 5% 1.5rem;background: #fbfbfb;width: 100%;color: #0e75c4;overflow: hidden;
+position: relative;}
+.type_btn{width:100%;height: auto;overflow: hidden;}
+.type_btn li{width: 33%;height:100%;float: left;overflow: hidden;margin-bottom: 0.5rem}
+
+.type_btn a{width: 8rem;height: 8rem;border-radius: 50% 50%;-webkit-border-radius:50% 50%;border: 1px solid #1c83ca;color: #0066bf;
+text-align: center;line-height: 8rem;position: relative;margin-left: -3.5rem;left: 50%;margin-top: 1rem;}
+.type_btn strong{font-size: 1.8rem;}
+
+.reCharge_record{width: 100%;height: 5rem;border-top: 1px solid #d3e5f2;border-bottom: 1px solid #d3e5f2;padding: 0 5%;position: relative;}
+.reCharge_record a{line-height: 5rem;color: #348ece;font-size: 1.6rem;}
+.reCharge_record i{display: block;width: 2rem;height: 2rem;background: url(../icon/table_arrow_right.png);background-size: 100% 100%;
+position: absolute;top: 1.5rem;right: 5%;}
+
+.mask{position: absolute;top:0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,0.6);}
+.mask_tip{width: 60%;position: absolute;left:20%;background: white;border-radius: 4px 4px;-webkit-border-radius:4px 4px;
+	top:40%;overflow: hidden;animation: test 0.5s;-webkit-animation: test 0.5s;animation-play-state:paused;-webkit-animation-play-state:paused
+}
+.mask_tip p{text-align: center;padding: 10% 10%;font-size: 1.6rem}
+
+.mask .active{animation-play-state:running;-webkit-animation-play-state:running;}
+
+@keyframes test{
+	0%{transform:scale(0);-webkit-transform:scale(0);}
+	40%{transform :scale(1.2);-webkit-transform :scale(1.2);}
+	60%{transform :scale(0.7);-webkit-transform :scale(0.7);}
+	100%{transform :scale(1);-webkit-transform :scale(1);}
+}
+@-webkit-keyframes test{
+	0%{transform:scale(0);-webkit-transform:scale(0);}
+	40%{transform :scale(1.2);-webkit-transform :scale(1.2);}
+	60%{transform :scale(0.7);-webkit-transform :scale(0.7);}
+	100%{transform :scale(1);-webkit-transform :scale(1);}
+}
+

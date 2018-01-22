@@ -1,0 +1,22 @@
+	<div class="record_view">
+		<div class="record_tip">
+		<p>今日净水量</p>
+		<p class="clear"><span class = "fl"><%= dayWater %></span><i class = "fl">L</i></p>
+		<p>建议每人：<em>1.5 L</em>水/天</p>
+		<a href="javascript:;" class="record_btn">历史饮水记录<i></i></a>
+		</div>
+		<div class="water_img">
+			<canvas id="arc" ></canvas>
+			<canvas id="arc2" ></canvas>
+		</div>
+	</div>
+	<div class="client_data">
+		<ul>
+			<li class="place_message"><% if(isImprove){%>
+				请完善用户资料
+				<%}else{%>
+				<%= clientMsg.name %>
+				<%}%></a><i></i></li>
+			<li class="over_money">账户余额:<span><%= balance %>元</span><em>充值</em><i></i></li>
+		</ul>
+	</div>

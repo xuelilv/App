@@ -1,0 +1,11 @@
+.view{
+  width: 100%;
+  height: 100%;
+ overflow: hidden;
+}
+.view_setName{width: 100%;height: 100%;overflow: hidden;}
+.view_setName p{text-align: center;font-size: 1.7rem;}
+.view_setName p:nth-of-type(1){margin:12% 0 8%;}
+.view_setName p:nth-of-type(2){margin:0rem 0 1.5rem;}
+.view_setName input{width: 80%;border:1px solid #ddd;margin-left: 10%;height: 36px;line-height: 36px;text-align: center;}
+.view_setName .setBtn_btn{margin:20% auto;}
