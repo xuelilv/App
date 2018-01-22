@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="no-cache" http-equiv="Cache-Control">
+<meta content="telephone=no" name="format-detection">
+<meta id="viewport" name="viewport" content="width=290, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="../common/css/jquery.mobile-1.4.2.css">
+<script src="../common/js/jquery-1.10.2.min.js"></script>
+<script src="../common/js/jquery.mobile-1.4.2.min.js"></script>
+<!--i18n source -->
+<script type="text/javascript" src="../common/js/i18n/zh.js"></script>
+<script type="text/javascript" src="../common/js/i18n/en.js"></script>
+<!--base source -->
+<script type="text/javascript" src="../base/iosbridge.js"></script>
+<script type="text/javascript" src="../base/base.js"></script>
+<script type="text/javascript">
+
+	// 调试开关 true：调试开 false：调试关
+	var bDebug = false;
+		
+	var co;
+	if (bDebug == true) {
+		co = '';
+	} else {
+		if(typeof bridge.getCurrentDevSN=='function'){
+			co = '_' + bridge.getCurrentDevSN();
+		} else {
+			co = '';
+		}
+	}
+
+    $(document).on('mobileinit', function() {
+		$.mobile.ajaxEnabled = false;
+    });
+	
+    $(document).on('pageinit', 'div[id="COMMON_DISCON"]', function (event) {
+        console.log('#COMMON_DISCON pageinit.');
+
+		// 动态读取设备名称
+		bridge.getCardTitle(function(message){
+			$("#COMMON_TITLE").html(message);
+		});
+
+		$("#COMMON_VIEW_TEXT").html(mdSmart.i18n.COMMON_CONNECTION_FAILED);
+		
+		if(bDebug == true){
+			var title = JSON.stringify({
+				messageBody: "XXX家电"
+			});
+			bridge.setCardTitle(title);
+		}
+		
+		// 动态追加图片
+		$('.card_ricecooker_offline').css('backgroundImage','url(images/card_offline'+co+'.png)');
+    });
+	
+    $(document).on('pageshow', 'div[id="COMMON_DISCON"]', function (event) {
+        console.log('#COMMON_DISCON pageshow.');
+		
+		$("#COMMON_DISCON").bind('tap', {}, function() {
+			var functionParamers = {
+				   title : mdSmart.i18n.COMMON_OFFLINE_INSPECTION,
+				   message : mdSmart.i18n.COMMON_MESSAGE,
+				   btnText : mdSmart.i18n.COMMON_SURE
+			};
+	
+		   bridge.showAlert(functionParamers);
+		});
+    });
+
+</script>
+<style>
+/*离线样式*/
+*{margin:0px;padding:0px;}
+ul,li { list-style:none}
+a{text-decoration:none;}
+.card_ricecooker_offline
+{
+    width: 100%;
+    height: 145px;
+    background:url(images/card_offline.png) no-repeat;
+    background-size: 100% 100%;
+}
+.card_bottom01
+{
+    width: 100%;
+    height: 35px;
+	line-height:35px;
+	font-size:13px;
+    background: url(images/card_bottom_offline.png) no-repeat;
+    background-size: 100% 100%;
+}
+.card_bottom01 ul li{
+	float: left;
+	height:35px;
+	line-height: 35px;
+	text-align: center;
+	-webkit-perspective: 1200;
+}
+.card_bottom01 ul li{
+	width: 100%;
+}
+.card_bottom01 ul li a,.card_bottom01 ul li a:hover{
+	display: block;
+	color:#656d78;
+}
+
+.icon_offline{
+	background:url(images/icon_offline.png)  no-repeat;
+	background-position:left center;
+	background-size:15px 15px;
+	color:#656d78;
+	padding-left: 20px;
+	font-size:13px;
+}
+.title{
+	font-size:15px;
+	color:#fff;
+	position: relative;
+	top:10px;
+	left:10px;
+	text-shadow: 0 0 0 #505050;
+	height: 24px;
+	display: block;
+}
+</style>
+</head>
+<body>
+<div data-role="page" id="COMMON_DISCON">
+	<div class="card_ricecooker_offline">
+		<span class="title" id="COMMON_TITLE"></span>
+	</div>
+	<div class="card_bottom01">
+    	<ul>
+			<li>
+            	<a href="#overlay_2" data-position-to="window">
+                	<span class="icon_offline" id="COMMON_VIEW_TEXT"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

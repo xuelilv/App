@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>App</title>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, height=device-height ,initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+        body {
+            background: #128FE9;
+            padding-top: 1rem;
+        }
+
+        #defineWind,
+        #smartWind {
+            padding-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="back">back</button>
+    <div class="page-chart">
+        <div id="defineWind"></div>
+        <div id='smartWind'></div>
+    </div>
+    <div id="DialogLoading" class="loadingWrap" style="display:none">
+        <div id="MaskLoading" class="dialogMask"></div>
+        <div id="loadingWrap" class="loadingDia">
+            <div id="ContentLoading" class="contentFullScreen">
+                <div class="txt">
+                    <div class="loadingDiv loadingDiv_0"></div>
+                    <div class="loadingDiv loadingDiv_1"></div>
+                    <div class="loadingDiv loadingDiv_2"></div>
+                    <div class="loadingDiv loadingDiv_3"></div>
+                    <div class="loadingDiv loadingDiv_4"></div>
+                    <div class="loadingDiv loadingDiv_5"></div>
+                    <div class="loadingDiv loadingDiv_6"></div>
+                    <div class="loadingDiv loadingDiv_7"></div>
+                    <div class="loadingDiv loadingDiv_8"></div>
+                    <div class="loadingDiv loadingDiv_9"></div>
+                    <div class="loadingDiv loadingDiv_10"></div>
+                    <div class="loadingDiv loadingDiv_11"></div>
+                </div>
+                <p class="loadingText">加载中...</p>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/lib/SVG/svg.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/event.js"></script>
+    <script src="./defineChart.js"></script>
+    <script>
+        var chartWidth = document.body.clientWidth - 10;
+        var dChartConfig = {
+            chartWidth: chartWidth,
+            chartHeight: 400,
+            xAxisUnitsNum: 5,
+            xAxisMin: 0,
+            xAxisMax: 30,
+            xAxisText: 's',
+            yAxisText: '档',
+            yAxisUnitsNum: 4,
+            yAxisMax: 30,
+            smallArcSize: 25,
+            fillColor: '#fff',
+            yAxisFontSize: 15,
+            callback: function(returnData) {
+                console.log(returnData);
+            }
+        };
+        var sChartConfig = {
+            chartWidth: chartWidth,
+            chartHeight: 400,
+            xAxisUnitsNum: 5,
+            xAxisMin: 15,
+            xAxisMax: 40,
+            yAxisUnitsNum: 4,
+            yAxisMax: 30,
+            xAxisText: '℃',
+            yAxisText: '温度',
+            smartWindArc: 45,
+            smallArcSize: 25,
+            fillColor: '#fff',
+            yAxisFontSize: 15,
+            callback: function(returnDate) {
+                console.log(returnData);
+            }
+        };
+        var dSeriesDate = [16, 11, 16, 21, 16, 11, 16];
+        defineChart()("defineWind", dChartConfig, dSeriesDate);
+        defineChart()("smartWind", sChartConfig, [20, 25]);
+        document.getElementById('back').addEventListener('tap', function(){
+            window.postMessage({data: {type: 'goBack'}});
+        }, false);
+    </script>
+</body>
+
+</html>

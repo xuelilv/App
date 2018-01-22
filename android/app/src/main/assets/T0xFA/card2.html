@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="no-cache" http-equiv="Cache-Control">
+    <meta content="telephone=no" name="format-detection">
+    <meta id="viewport" name="viewport" content="width=290, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../common/css/jquery.mobile-1.4.2.css">
+    <script src="../common/js/jquery-1.10.2.min.js"></script>
+    <script src="../common/js/jquery.mobile-1.4.2.min.js"></script>
+    <link rel="stylesheet" href="css/custom2.css">
+    <!--i18n source -->
+    <script type="text/javascript" src="./js/i18n/zh.js"></script>
+    <script type="text/javascript" src="./js/i18n/en.js"></script>
+    <!--base source -->
+    <script type="text/javascript" src="../base/iosbridge.js"></script>
+    <script type="text/javascript" src="../base/base.js"></script>
+    <!--private source -->
+    <script>
+        var getLanguage = function(){
+            //bridge.getLangCode()
+            if(window.navigator.hasOwnProperty("language")){
+                var language = window.navigator.language.split("-");
+                return language[0];
+            }else{
+                return "zh";
+            }
+        };
+        var lang = getLanguage();
+        mdSmart.i18n = mdSmart_i18n_zh;
+        if(lang == "zh"){
+            mdSmart.i18n = mdSmart_i18n_zh;
+        }else if(lang == "en"){
+            mdSmart.i18n = mdSmart_i18n_en;
+        }
+    </script>
+    <script type="text/javascript" src="./js/FA_MSG.js"></script>
+    <script type="text/javascript" src="./js/FA_P01_2.js"></script>
+    <!--<script src="http://172.16.10.15:8080/mdSmart/T0xFA/js/FA_P01_2.js"></script>-->
+    <script type="text/javascript" src="./js/FA_P02_2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.mobile.ajaxEnabled = false;
+        });
+    </script>
+</head>
+<body>
+<!-- card on 开始-->
+<div class="card_main" data-role="page" id="FA_P01">
+    <div id="FA_P01_DIV_INFO" class="card_on_1">
+        <div class="title" id="FA_P01_LBL_TITLE">
+            <!--风扇-客厅-->
+        </div>
+        <div class="data_info">
+            <!--<span id="FA_P01_IMG_WINDTYPE2345" class="time"><img id="FB_P01_IMG_WINDTYPE2" src="images/m_icon_2_b.png"/><img id="FB_P01_IMG_WINDTYPE3" src="images/m_icon_3_b.png"/><img id="FB_P01_IMG_WINDTYPE4" src="images/m_icon_5_b.png"/><img id="FB_P01_IMG_WINDTYPE5" src="images/m_icon_4_b.png"/></span>-->
+            <span id="FA_P01_LBL_GEAR"><!--18--></span><span class="text" style="display: none"><!--<span id="FA_P01_LBL_CURRENTTEMPERATURE_LEFT"></span><span id="FA_P01_LBL_CURRENTTEMPERATURE"></span><sup>o</sup>--></span><span id="FA_P01_LBL_WINDTYPE"><!--正常风模式--></span>
+        </div>
+    </div>
+    <div class="card_bottom_1">
+        <ul>
+            <li>
+                <a id="FA_P01_BTN_WIND_MINUS" href="">
+                    <span class="card_bottom_but_1"><!--风速减--></span>
+                </a>
+            </li>
+            <li>
+                <a id="FA_P01_BTN_WIND_PLUS" href="">
+                    <span class="card_bottom_but_2"><!--风速加--></span>
+                </a>
+            </li>
+            <li>
+                <a id="FA_P01_BTN_POWER_A" href="">
+                    <span id="FA_P01_BTN_POWER" class="card_bottom_but_3"><!--关机--></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- card on 结束-->
+<!-- card off 开始-->
+<div class="card_main" data-role="page" id="FA_P02">
+    <div id="FA_P01_DIV_OFF" class="card_off">
+        <div class="title" id="FA_P02_LBL_TITLE">
+            <!--风扇-客厅-->
+        </div>
+        <div class="clear"></div>
+        <div class="data_info">
+            <span id="FA_P02_LBL_POWEROFF" class="close"><!--已关机--></span>
+            <span class="text" style="display: none"><!--<span id="FA_P02_LBL_CURRENTTEMPERATURE_LEFT"></span><span id="FA_P02_LBL_CURRENTTEMPERATURE"></span><sup>o</sup>--></span>
+        </div>
+    </div>
+    <div class="card_bottom_2">
+        <ul>
+            <li>
+                <a id="FA_P02_BTN_POWER" href="">
+                    <span class="card_bottom_but_3"><!--开机--></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- card off 结束-->
+<!--<script src="http://172.16.10.15:8085/target/target-script-min.js#anonymous"></script>-->
+</body>
+</html>

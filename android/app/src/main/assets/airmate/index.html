@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>App</title>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, height=device-height ,initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport" />
+    <meta name="format-detection" content="telephone=no" />
+    <style>
+        body {
+            background: #128FE9;
+            padding-top: 1rem;
+        }
+.header {
+    height: 4rem;
+    line-height: 4rem;
+    padding: 0 20px;
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+}
+.back {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAABMCAYAAAAbbiUcAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEM4MUUxNDdENDhDMTFFNUEzMDRGNzMxNjk3MjFDM0MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEM4MUUxNDZENDhDMTFFNUEzMDRGNzMxNjk3MjFDM0MiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MUU2MEE3MTFENDgzMTFFNThCQTNGRjVGRjY5QkUzQUIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MUU2MEE3MTJENDgzMTFFNThCQTNGRjVGRjY5QkUzQUIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7xvJlUAAAGj0lEQVR42sya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) 0 50% no-repeat;
+    background-size: 60%;
+    display: inline-block;
+    width: 25px;
+    height: 100%;
+    float: left;
+}
+        #defineWind,
+        #smartWind {
+            padding-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixIOS"></div>
+    <div class="header">
+        <span class="back" id="back"></span>
+    </div>
+    <div class="page-chart">
+        <div id="defineWind"></div>
+        <div id='smartWind'></div>
+    </div>
+    <div id="DialogLoading" class="loadingWrap" style="display:none">
+        <div id="MaskLoading" class="dialogMask"></div>
+        <div id="loadingWrap" class="loadingDia">
+            <div id="ContentLoading" class="contentFullScreen">
+                <div class="txt">
+                    <div class="loadingDiv loadingDiv_0"></div>
+                    <div class="loadingDiv loadingDiv_1"></div>
+                    <div class="loadingDiv loadingDiv_2"></div>
+                    <div class="loadingDiv loadingDiv_3"></div>
+                    <div class="loadingDiv loadingDiv_4"></div>
+                    <div class="loadingDiv loadingDiv_5"></div>
+                    <div class="loadingDiv loadingDiv_6"></div>
+                    <div class="loadingDiv loadingDiv_7"></div>
+                    <div class="loadingDiv loadingDiv_8"></div>
+                    <div class="loadingDiv loadingDiv_9"></div>
+                    <div class="loadingDiv loadingDiv_10"></div>
+                    <div class="loadingDiv loadingDiv_11"></div>
+                </div>
+                <p class="loadingText">加载中...</p>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/lib/SVG/svg.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/event.js"></script>
+    <script src="./defineChart.js"></script>
+    <script>
+        var chartWidth = document.body.clientWidth - 10;
+        var dChartConfig = {
+            chartWidth: chartWidth,
+            chartHeight: 400,
+            xAxisUnitsNum: 5,
+            xAxisMin: 0,
+            xAxisMax: 30,
+            xAxisText: 's',
+            yAxisText: '档',
+            yAxisUnitsNum: 4,
+            yAxisMax: 30,
+            smallArcSize: 25,
+            fillColor: '#fff',
+            yAxisFontSize: 15,
+            callback: function(returnData) {
+                console.log(returnData);
+            }
+        };
+        var sChartConfig = {
+            chartWidth: chartWidth,
+            chartHeight: 400,
+            xAxisUnitsNum: 5,
+            xAxisMin: 15,
+            xAxisMax: 40,
+            yAxisUnitsNum: 4,
+            yAxisMax: 30,
+            xAxisText: '℃',
+            yAxisText: '温度',
+            smartWindArc: 45,
+            smallArcSize: 25,
+            fillColor: '#fff',
+            yAxisFontSize: 15,
+            callback: function(returnDate) {
+                console.log(returnData);
+            }
+        };
+        var dSeriesDate = [16, 11, 16, 21, 16, 11, 16];
+        defineChart()("defineWind", dChartConfig, dSeriesDate);
+        defineChart()("smartWind", sChartConfig, [20, 25]);
+        document.getElementById('back').addEventListener('tap', function(){
+            window.postMessage('goBack');
+        }, false);
+    </script>
+</body>
+
+</html>

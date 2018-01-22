@@ -1,0 +1,418 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta content="no-cache" http-equiv="Cache-Control">
+<meta content="telephone=no" name="format-detection">
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="../common/css/jquery-ui-curve.css">
+<link rel="stylesheet" href="../common/css/jquery.mobile-1.4.2.css">
+<script src="../common/js/jquery-1.10.2.min.js"></script>
+<script src="../common/js/jquery.mobile-1.4.2.min.js"></script>
+<script src="../common/js/jquery-ui-curve.js"></script>
+<script src="../common/js/idangerous.swiper-2.1.min.js"></script>
+<link rel="stylesheet" href="css/custom.css">
+<!--i18n source -->
+<script type="text/javascript" src="./js/i18n/zh.js"></script>
+<script type="text/javascript" src="./js/i18n/en.js"></script>
+<!--base source -->
+<script type="text/javascript" src="../base/iosbridge.js"></script>
+<script type="text/javascript" src="../base/base.js"></script>
+<!--private source -->
+<script type="text/javascript" src="./js/FA_MSG.js"></script>
+<script type="text/javascript" src="./js/FA_P03.js"></script>
+<!--
+<script type="text/javascript" src="./js/FA_P04.js"></script>
+-->
+<script type="text/javascript" src="./js/FA_P05.js"></script>
+<script type="text/javascript" src="./js/mobiscroll.core-2.5.2.js"></script>
+
+<!-- 时间划动 调用 开始 -->
+<link rel="stylesheet" href="../common/css/mobiscroll.core-2.5.2.css">
+<script src="../common/js/mobiscroll.datetime-2.5.1.js"></script>
+<!--
+<script src="../common/js/mobiscroll.core-2.5.2.js"></script>
+
+-->
+
+<link rel="stylesheet" href="../common/css/mobiscroll-datetime.css">
+<style>
+.ios-datetime .dw {
+	color: #3e434a;
+	background: #292829;
+}
+.ios-datetime .dwv {
+	border-bottom: 2px solid #f5f5f5;
+	font-size: 16px;
+	height: 56px;
+	line-height: 56px;
+	color:#3e434a;
+	font-weight:bold;
+}
+.ios-datetime .dww {
+	margin-top: -40px;
+	left:-10px;
+}
+.ios-datetime .dwl {
+	color: #000000;
+	text-align: center;
+	top: 55px;
+	left: 22px;
+	width: 100%;
+	font-size: 14px;
+}
+.dwwl {
+width: 110px;
+}
+.ios-datetime .dw .dwwol {
+	width: 125%;
+	left: -12%;
+	height: 30px;
+	border-top: 1px solid #cdcdcd;
+	border-bottom: 1px solid #cdcdcd;
+	margin-top: -19px;
+}
+.ios-datetime .dwwol {
+	top: 52%;
+}
+.ios-datetime.light .dwb-c .dwb, .ios-datetime.light .dwb-n .dwb {
+	border-right: 1px solid #dbdbdb;
+}
+.ios-datetime.light .dwb {
+color: #67696b;
+}
+</style>
+<!-- 时间划动 调用 结束 -->
+</head>
+<body>
+<div class="bg_2" data-role="page" id="FA_P03">
+	<!--top start-->
+	<div id="FA_P03_DIV_INFO" class="panel_bg_1" style="position: fixed;width: 100%;z-index: 20;">
+		<!-- 更换 panel_bg_颜色 改变背景图案 -->
+		<div class="topbg_1">
+			<a id="FA_P03_BTN_BACK" href="" class="back"><!--返回--></a>
+			<div id="FA_P03_LBL_TITLE" class="top_title"><!--风扇--></div>
+			<!--<a id="FA_P03_BTN_INFO" href="" class="link">家电信息</a>-->
+		</div>
+		<div class="clear"></div>
+		<div class="data_area_1">
+			<div class="data_function">
+				<div class="data_number"><span id="FA_P03_LBL_CURRENTTEMPERATURE" class="card_font"><!--45--></span></div>
+                <div class="data_detailed">
+                    <span style="display: block;" class="card_font">O</span>
+                    <span id="FA_P03_LBL_CURRENTTEMPERATURE_COMMENT" class="text_2" style="margin-top: 15px;display: block;"><!--室温--></span>
+                    <span  id="FA_P03_IMGDIV_WINDTYPE" class="text_icon" style="top:0px;left:15px;">
+                        <img id="FA_P03_IMG_WINDTYPE_1" src="images/icon_wind.png">
+                        <img id="FA_P03_IMG_WINDTYPE_2" src="images/icon_wind_1.png">
+                        <img id="FA_P03_IMG_WINDTYPE_3" src="images/icon_wind_2.png">
+                        <img id="FA_P03_IMG_WINDTYPE_4" src="images/icon_wind_4.png">
+                        <img id="FA_P03_IMG_WINDTYPE_5" src="images/icon_wind_3.png">
+                    </span>
+                    <span id="FA_P03_LBL_WINDTYPE" class="text_3" style="left:135px;"><!--正常风--></span>
+				</div>
+            </div>
+			<div class="data_status">
+				<span id="FA_P03_LBL_SHAKE" class="type_1"><span id="FA_P03_LBL_SHAKE_ANGLE">90</span><sup>o</sup> <span id="FA_P03_LBL_SHAKE_TYPE">摇头</span></span>
+				<span id="FA_P03_LBL_TIMINGOFF" class="type_1"><!--预约关机--></span>
+				<span id="FA_P03_LBL_TIMINGON" class="type_1"><!--预约开机--></span>
+			</div>
+		</div>
+	</div>
+	<!--top over-->
+	<div class="clear"></div>
+
+	<div class="position" style="margin-top:210px;">
+		<div id="FA_P03_BTN_WINDTYPESET_OPEN" class="mode_close_bg">
+			<img src="images/purifier_arrow_down.png"><span id="FA_P03_LBL_SETWINDTYPE_1"><!--运行模式--></span></div>
+		<div class="mode_open_bg" style="display:none;">
+			<div class="h_10 clear"></div>
+			<!-- 遮罩层 -->
+            <div id="modecoverDiv" class="block_b_z1"></div>
+			<div class="m_block">
+				<a id="FA_P03_BTN_SET_WINDTYPE_1" href="" class="m_icon_1">
+					<span class="font_explain"><!--正常风--></span>
+				</a>
+			</div>
+			<div class="m_block">
+				<a id="FA_P03_BTN_SET_WINDTYPE_2" href="" class="m_icon_2">
+					<span class="font_explain"><!--自然风--></span>
+				</a>
+			</div>
+			<div class="m_block">
+				<a id="FA_P03_BTN_SET_WINDTYPE_3" href="" class="m_icon_3">
+					<span class="font_explain"><!--睡眠风--></span>
+				</a>
+			</div>
+			<div class="m_block">
+				<a id="FA_P03_BTN_SET_WINDTYPE_5" href="" class="m_icon_4">
+					<span class="font_explain"><!--静音风--></span>
+				</a>
+			</div>
+			<div class="m_block">
+				<a id="FA_P03_BTN_SET_WINDTYPE_4" href="" class="m_icon_5">
+					<span class="font_explain"><!--舒适风--></span>
+				</a>
+			</div>
+			<div class="h_10 clear"></div>
+			<div id="FA_P03_BTN_WINDTYPESET_CLOSE" class="pulldiv">
+				<img src="images/purifier_arrow_up.png"><span id="FA_P03_LBL_SETWINDTYPE_2"><!--运行模式--></span></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+
+	<div class="winddiv">
+		<!-- 遮罩层 -->
+		<div id="FA_P03_DIV_DISABLE_COVER" class="disable_box"></div>
+
+		<div class="claer h_10">
+		</div>
+		<!--sweep-->
+		<div class="device device_bg_1">
+			<div id="FA_P03_LBL_WINDSPEED_CONTENT" class="mask_title"><!--风速--></div>
+			<a class="arrow-left" href="#"></a>
+			<a class="arrow-right" href="#"></a>
+			<div class="sweep_up"></div>
+			<div class="sweep_down"></div>
+			<div class="mask_1"></div>
+			<div class="mask_bg_1"></div>
+			<div id="swiper_container1" class="swiper-container1">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" id="0"></div>
+					<div class="swiper-slide" id="1">1</div>
+					<div class="swiper-slide" id="2">2</div>
+					<div class="swiper-slide" id="3">3</div>
+					<div class="swiper-slide" id="4">4</div>
+					<div class="swiper-slide" id="5">5</div>
+					<div class="swiper-slide" id="6">6</div>
+					<div class="swiper-slide" id="7">7</div>
+					<div class="swiper-slide" id="8">8</div>
+					<div class="swiper-slide" id="9">9</div>
+					<div class="swiper-slide" id="10">10</div>
+					<div class="swiper-slide" id="11">11</div>
+					<div class="swiper-slide" id="12">12</div>
+					<div class="swiper-slide" id="13">13</div>
+					<div class="swiper-slide" id="14">14</div>
+					<div class="swiper-slide" id="15">15</div>
+					<div class="swiper-slide" id="16">16</div>
+					<div class="swiper-slide" id="17">17</div>
+					<div class="swiper-slide" id="18">18</div>
+					<div class="swiper-slide" id="19">19</div>
+					<div class="swiper-slide" id="20">20</div>
+					<div class="swiper-slide" id="21">21</div>
+					<div class="swiper-slide" id="22">22</div>
+					<div class="swiper-slide" id="23">23</div>
+					<div class="swiper-slide" id="24">24</div>
+					<div class="swiper-slide" id="25">25</div>
+					<div class="swiper-slide" id="26">26</div>
+				</div>
+			</div>
+			<div class="pagination"></div>
+		</div>
+		<!--sweep end-->
+		<div class="clear h_20"></div>
+		<div class="block_b" id="FA_P03_BTN_SHAKE_DIV" style="display:none">
+			<a id="FA_P03_BTN_SHAKE" href="" class="icon_ctl_1">
+				<span class="font_explain2"><!--摇头--></span>
+			</a>
+		</div>
+        
+		<div class="block_b">
+			<a id="FA_P03_BTN_TIMINGON" href="" class="icon_ctl_2">
+				<span class="text"><span id="FA_P03_BTN_TIMINGON_INNER_VALUE"><!--00:46--></span><br/><span id="FA_P03_BTN_TIMINGON_INNER_LABEL"><!--定时开机--></span></span>
+				<span id="FA_P03_BTN_TIMINGON_LABEL" class="font_explain2"><!--预约--></span>
+                <input type="text" id="appTime_on" value="00:00" style="display:none;"/>
+			</a>
+		</div>
+		<div class="block_b">
+			<a id="FA_P03_BTN_TIMINGOFF" href="" class="icon_ctl_2">
+				<span class="text"><span id="FA_P03_BTN_TIMINGOFF_INNER_VALUE"><!--00:46--></span><br/><span id="FA_P03_BTN_TIMINGOFF_INNER_LABEL"><!--定时关机--></span></span>
+				<span id="FA_P03_BTN_TIMINGOFF_LABEL" class="font_explain2"><!--预约--></span>
+                <input type="text" id="appTime_off" value="00:00" style="display:none;"/>
+			</a>
+		</div>
+        
+		<div class="block_b">
+			<a id="FA_P03_BTN_FELL_WELL" href="#" class="icon_ctl_3">
+				<span class="font_explain2"><!--亲心爽--></span>
+			</a>
+		</div>
+        <div class="clear"></div>
+	</div>
+	<!-- footer 固定 开始 -->
+	<div class="footer_fixed">      
+        <div id="FA_P03_BTN_POWEROFF" class="poweroff" style="display:none;"><img src="images/footer_icon_poweroff.png"><span class="font_position01"><!--关闭--></span></div>
+		<div id="FA_P03_POWER_CLOSE_CONFIRM" class="poweroffing" style="display:none;"><img src="images/footer-power-icon_confirm.png"><span class="font_position02">确认关机</span></div>
+        <div id="FA_P03_POWER_CLOSE_EXECUTE" class="poweroffing" style="display:none;"><img src="images/footer-power-icon-closing.png" class="parent"><span class="font_position02">正在关机</span></div>
+        
+		<div id="FA_P03_BTN_POWERON" class="footer_but_poweron" style="display:none;" >
+			<span class="footer_icon_poweron"><!--开机--></span>
+		</div>
+		<div class="clear h_20"></div>
+	</div>
+	<!-- footer 固定 结束 -->
+</div>
+<div class="body_subpanel_bg" data-role="page" id="FA_P04">
+	<!--top start-->
+	<div class="subpanel_bg">
+		<div class="topbg_1">
+			<a id="FA_P04_BTN_BACK" href="#" class="back"><!--返回--></a>
+			<div id="FA_P04_LBL_TITLE" class="top_title"><!--预约--></div>
+		</div>
+	</div>
+	<!--top over-->
+	<div class="subpanel_box">
+		<ul>
+			<li>
+				<span id="FA_P04_LBL_TIMINGON" class="subpanel_list_text left_fix"><!--预约开机--></span>
+				<span class="subpanel_list_time"><input type="text" id="appTime_1" value="00:00"/></span>
+				<span id="FA_P04_LBL_TIMINGON_SWITCH" class="subpanel_list_icon_s2_1 right_fix"></span>
+			</li>
+			<li>
+				<span id="FA_P04_LBL_TIMINGOFF" class="subpanel_list_text left_fix"><!--预约关机--></span>
+				<span class="subpanel_list_time"><input type="text" id="appTime_2" value="00:00"/></span>
+				<span id="FA_P04_LBL_TIMINGOFF_SWITCH" class="subpanel_list_icon_s2_1 right_fix"></span>
+			</li>
+		</ul>
+		<p id="FA_P04_LBL_NOTES" class="p2"><!--请点按时间进行设定--></p>
+	</div>
+</div>
+<div class="body_subpanel_bg" data-role="page" id="FA_P05">
+	<!--top start-->
+	<div class="subpanel_bg">
+		<div class="topbg_1">
+			<a id="FA_P05_BTN_BACK" href="#" class="back"><!--返回--></a>
+			<div id="FA_P05_LBL_TITLE" class="top_title"><!--摇头设置--></div>
+		</div>
+	</div>
+	<!--top over-->
+	<div class="subpanel_box">
+		<ul>
+			<li id="FA_P05_SHAKE_LI_30">
+				<span class="subpanel_list_text left_fix">30<sup>o</sup> <span id="FA_P05_LBL_SHAKE30"><!--摇头--></span></span>
+				<span id="FA_P05_SHAKE_30" class="subpanel_list_icon_s2_1 right_fix"></span>
+			</li>
+			<li id="FA_P05_SHAKE_LI_60">
+				<span class="subpanel_list_text left_fix">60<sup>o</sup> <span id="FA_P05_LBL_SHAKE60"><!--摇头--></span></span>
+				<span id="FA_P05_SHAKE_60" class="subpanel_list_icon_s2_1 right_fix"></span>
+			</li>
+			<li id="FA_P05_SHAKE_LI_90">
+				<span class="subpanel_list_text left_fix">90<sup>o</sup> <span id="FA_P05_LBL_SHAKE90"><!--摇头--></span></span>
+				<span  id="FA_P05_SHAKE_90" class="subpanel_list_icon_s2_1 right_fix"></span>
+			</li>
+			<li id="FA_P05_SHAKE_LI_OFF">
+				<span id="FA_P05_LBL_SHAKEOFF" class="subpanel_list_text left_fix"><!--停止摇头--></span>
+				<span id="FA_P05_SHAKE_OFF" class="subpanel_list_icon_s2_1 right_fix"></span>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="body_subpanel_bg" data-role="page" id="FA_P06">
+	<!--top start-->
+	<div class="subpanel_bg">
+		<div class="topbg_1">
+			<a href="#FA_P03" class="back">返回</a>
+			<div class="top_title">亲心爽</div>
+		</div>
+	</div>
+	<!--top over-->
+	<div class="subpanel_box">
+		<ul>
+			<li>
+				<span class="subpanel_list_icon_s1"><img src="images/subpanel_list_icon_s1_1.png"></span>
+				<span class="subpanel_list_text" onclick="$.mobile.changePage('#FA_P07','turn');">正常清爽曲线</span>
+				<span class="subpanel_list_icon_s2_2"></span>
+				<span class="subpanel_list_space"></span>
+				<span class="subpanel_list_icon_s2_1"></span>
+			</li>
+			<li>
+				<span class="subpanel_list_icon_s1"><img src="images/subpanel_list_icon_s1_1.png"></span>
+				<span class="subpanel_list_text">儿童清爽曲线</span>
+				<span class="subpanel_list_icon_s2_2"></span>
+				<span class="subpanel_list_space"></span>
+				<span class="subpanel_list_icon_s2_1"></span>
+			</li>
+			<li>
+				<span class="subpanel_list_icon_s1"><img src="images/subpanel_list_icon_s1_1.png"></span>
+				<span class="subpanel_list_text">老人清爽曲线</span>
+				<span class="subpanel_list_icon_s2_2"></span>
+				<span class="subpanel_list_space"></span>
+				<span class="subpanel_list_icon_s2_1"></span>
+			</li>
+			<li>
+				<span class="subpanel_list_icon_s1"><img src="images/subpanel_list_icon_s1_2.png"></span>
+				<span class="subpanel_list_text">王晓涛清爽曲线</span>
+				<a href="#overlay_delete" data-rel="popup" data-position-to="window"><span class="subpanel_list_icon_s3"></span></a>
+			</li>
+			<li>
+				<a href="#overlay_add" data-rel="popup" data-position-to="window"><span class="subpanel_list_icon_s1"><img src="images/subpanel_list_icon_s1_3.png"></span>
+				<span class="subpanel_list_text">添加清爽曲线</span></a>
+			</li>
+		</ul>
+		<p class="p1">选择清凉曲线后风扇将在8小时内自动调节风速，为您提供清爽舒心的凉快体验。</p>
+	</div>
+	<div data-role="popup" id="overlay_delete">
+		<div class="popupbg_1">
+			<div class="clear h_20"></div>
+			<p>温馨提示</p>
+			<div class="clear h_10"></div>
+			<p>是否删除‘王晓涛清爽曲线’？</p>
+			<div class="clear h_10"></div>
+			<div class="h_45">
+			<a href="" class="btn_cancel" data-rel="back">取消</a>
+			<a href="" class="btn_confirm_01" data-rel="back">删除</a>
+			</div>
+		</div>
+	</div>
+	<div data-role="popup" id="overlay_save">
+		<div class="popupbg_1">
+			<div class="clear h_20"></div>
+			<p>温馨提示</p>
+			<div class="clear h_10"></div>
+			<p>曲线已编辑，是否保存？</p>
+			<div class="clear h_10"></div>
+			<div class="h_45">
+			<a href="" class="btn_cancel" data-rel="back">取消</a>
+			<a href="" class="btn_confirm_02" data-rel="back">保存</a>
+			</div>
+		</div>
+	</div>
+	<div data-role="popup" id="overlay_add">
+		<div class="popupbg_1">
+			<div class="clear h_20"></div>
+			<p>添加清爽曲线</p>
+			<div class="clear h_20"></div>
+			<input type="text" name="" id="" size="18" maxlength="30" value="请输入曲线名称" style="width:90%;background:rgba(255, 255, 255,.4);font-size:14px;margin:0 auto;padding:4px;border-bottom:1px solid rgba(178, 178, 178,.5);border-radius:0;"/>
+			<div class="clear h_10"></div>
+			<div class="h_45">
+			<a href="" class="btn_cancel" data-rel="back">取消</a>
+			<a href="#overlay_save" data-rel="popup" data-position-to="window" class="btn_confirm_02">确定</a>
+			</div>
+		</div>
+	</div>
+</div>
+    <script>
+	$(document).on('pageshow', 'div[id="FA_P07"]', function (event) {
+		console.log('#FA_P07 pageshow.');
+		var curveChart = $(".curve-container").curveChart();
+		curveChart.setYTitle("风速","1em","#a2bbc7",25,35);
+		curveChart.drawXLine([1,2,3,4,5,6,7,"8(小时)"],2,"#a2bbc7","1em","#a2bbc7");
+		curveChart.drawYLine(["-",2,"-",4,"-",6,"-",8,"-",10,"-",12,"-",14,"-",16,"-",18,"-",20,"-",22,"-",24,"-",26,"-"],2,"#a2bbc7","1em","#a2bbc7");
+		curveChart.createSlider(1,26);
+	});
+  </script>
+<div class="body_subpanel_bg" data-role="page" id="FA_P07">
+	<!--top start-->
+	<div class="subpanel_bg">
+		<div class="topbg_1">
+			<a href="#FA_P06" class="back">返回</a>
+			<div class="top_title">亲心爽</div>
+			<a href="#FA_P06" class="link">完成</a>
+		</div>
+	</div>
+	<!--top over-->
+	<div class="curve-container" style="border:0px solid red;height:400px;">
+	</div>
+</div>
+
+</body>
+</html>

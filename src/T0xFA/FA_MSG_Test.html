@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="copyright" content="Copyright (c) 2014 media Corporation">
+<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+<link rel="stylesheet" href="../common/css/jquery.mobile-1.4.2.css">
+<script src="../common/js/jquery-1.10.2.min.js"></script>
+<script src="../common/js/jquery.mobile-1.4.2.min.js"></script>
+<!--i18n source -->
+<script type="text/javascript" src="./js/i18n/zh.js"></script>
+<script type="text/javascript" src="./js/i18n/en.js"></script>
+<!--base source -->
+<script type="text/javascript" src="../base/iosbridge.js"></script>
+<script type="text/javascript" src="../base/base.js"></script>
+<!--private source -->
+<script type="text/javascript" src="./js/FA_MSG.js"></script>
+<script type="text/javascript" src="./js/FA_MSG_TEST.js"></script>
+<script>
+    $(document).on('mobileinit', function() {
+        $.mobile.ajaxEnabled = false;
+    });
+</script>
+</head>
+<body>
+<!-- #FC_P01 ------------------------------------------------------------------------------------>
+<div data-role="page" id="FA_MSG_TEST_P01" class="card-page-background">
+    <div data-role="header">
+        <h1 class="card-tilte"><span>title</span></h1>
+    </div>
+    <div data-role="content" data-theme="x">
+        <div id="cmdDiv">
+            <a href="#" id="FA_MSG_TEST_01_BTN01" data-role="button"   data-inline="true"><span>设备查询</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN02" data-role="button"  data-inline="true"><span>家电信息查询</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN03" data-role="button"  data-inline="true"><span>设备SN读取</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN04" data-role="button"  data-inline="true"><span>开机</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN05" data-role="button"  data-inline="true"><span>关机</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN06" data-role="button"  data-inline="true"><span>设备语音-开启语音导航</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN07" data-role="button"  data-inline="true"><span>设备语音-关闭语音导航</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN08" data-role="button"  data-inline="true"><span>设备语音-开启蜂鸣器</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN09" data-role="button"  data-inline="true"><span>设备语音-关闭蜂鸣器</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN10" data-role="button"  data-inline="true"><span>设备语音-同时开启语音导航和蜂鸣器</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN11" data-role="button"  data-inline="true"><span>设备语音-完全静音</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN12" data-role="button"  data-inline="true"><span>设立刻开机，定时关机6小时</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN13" data-role="button"  data-inline="true"><span>设立刻关机，定时开机6小时</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN14" data-role="button"  data-inline="true"><span>设备立刻关机，定时开机10小时30分钟</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN15" data-role="button"  data-inline="true"><span>设备立刻开机，定时关机10小时30分钟</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN16" data-role="button"  data-inline="true"><span>取消定时关机</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN17" data-role="button"  data-inline="true"><span>取消定时开机</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN18" data-role="button"  data-inline="true"><span>风类型-正常风</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN19" data-role="button"  data-inline="true"><span>风类型-自然风</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN20" data-role="button"  data-inline="true"><span>风类型-睡眠风</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN21" data-role="button"  data-inline="true"><span>风类型-舒适风</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN22" data-role="button"  data-inline="true"><span>风类型-静音</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN23" data-role="button"  data-inline="true"><span>设置1档</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN24" data-role="button"  data-inline="true"><span>设置26档</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN25" data-role="button"  data-inline="true"><span>打开摇头</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN26" data-role="button"  data-inline="true"><span>关闭摇头</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN27" data-role="button"  data-inline="true"><span>设置摇头（摆风）角度-30度</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN28" data-role="button"  data-inline="true"><span>设置摇头（摆风）角度-60度</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN29" data-role="button"  data-inline="true"><span>设置摇头（摆风）角度-90度</span></a>
+            <a href="#" id="FA_MSG_TEST_01_BTN30" data-role="button"  data-inline="true"><span>设置摇头（摆风）类型-左右摇头</span></a>
+        </div>
+        <div id="statusDiv">
+            statusDiv
+        </div>
+        <div id="sendMsgDiv">
+            sendMsgDiv
+        </div>
+        <div id="receiveMsgDiv">
+            receiveMsgDiv
+        </div>
+    </div>
+</div>
+</body>
+</html>

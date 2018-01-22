@@ -1,0 +1,111 @@
+body {
+    background: none;
+}
+
+.page-index .header {
+    position: relative;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    background-color: #007ACC;
+    text-align: center;
+}
+
+.page-index .header .back {
+    position: absolute;
+    left: 4%;
+    margin-top: 1.1rem;
+    border-color: #fff;
+}
+
+.page-index .header .title {
+    display: inline-block;
+    color: #fff;
+    font-size: 1.7rem;
+    line-height: 3.5rem;
+}
+
+.page-index .header .search {
+    font-size: 1.7rem;
+    position: absolute;
+    right: 3%;
+    color: #fff;
+}
+
+.page-index .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #ddd;
+    color: #939094;
+    z-index: 1;
+    font-size: 1.2rem;
+}
+
+.page-index .footer .item {
+    flex-grow: 1;
+    height: 100%;
+    text-align: center;
+}
+
+.page-index .footer .setting {
+    padding-top: 5px;
+}
+
+.page-index .footer .item.setting img {
+    width: 27px;
+}
+
+.page-index .footer .item img {
+    width: 32px;
+}
+
+.page-index .footer .item:last-child {
+    border: none;
+}
+
+.page-index div.slide-contain {
+    height: 200px;
+}
+
+.slide-item:nth-child(1) {
+    background-color: #007ACC;
+}
+
+.slide-item:nth-child(2) {
+    background-color: #939094;
+}
+
+.slide-item:nth-child(3) {
+    background-color: greenyellow;
+}
+
+
+/**** list ****/
+
+.list li {
+    display: -webkit-flex;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 0.5rem 0;
+}
+
+.list li .img {
+    flex: 20%;
+}
+
+.list li .right {
+    flex: 80%;
+}
+
+.list li img {
+    width: 32px;
+    height: 32px;
+    background: #007ACC;
+}

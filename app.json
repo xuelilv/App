@@ -1,4 +1,5 @@
 {
-  "name": "ReactApp",
-  "displayName": "ReactApp"
+  "name": "Work",
+  "displayName": "Work",
+  "icon": "./icon.png"
 }
