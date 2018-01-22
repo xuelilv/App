@@ -1,0 +1,2 @@
+/*TMODJS:{"version":3,"md5":"30706cd08e76cb4a8fd62404d4fea83f"}*/
+define(["./template",""],function(a){return a("list",function(a){"use strict";var b=this,c=(b.$helpers,b.$escape),d=a.did,e=a.name,f="";return f+='<div class="view" id="',f+=c(d),f+='"> <div class="name">',f+=c(e),f+='</div> <div class="btn"><button>\u7f16\u8f91</button></div> </div> ',new String(f)})});

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://www.w3.org/1999/xlink" width="<%=width%>px" height="<%=height%>px">
+    <g>
+        <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/round_bg.png" x="<%=cx-r%>" y="<%=cy-r%>" height="<%=r*2%>px" width="<%=r*2%>px"></image>
+        <circle cx="<%=cx%>" cy="<%=cy%>" r="<%=r%>" id="PieCir"></circle>
+        <path class="innerCir" id="innerCir" d="M<%=startX%> <%=startY%>A<%=r%> <%=r%> , 0, 1, 1,<%=endX%> <%=endY%>" stroke-dasharray="<%= perimeter%> <%= perimeter%>" stroke-dashoffset="<%= perimeter%>"></path>
+    </g>
+<!--     <g id="markings" transform="translate(<%=translateX%>,<%=translateY%>) scale(<%=scaleX%>,<%=scaleY%>)">
+        <line id="60R" class="mark" fill="none" stroke="#fff" stroke-miterlimit="10" x1="243.5" y1="148" x2="243.5" y2="133"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="220.266" y1="141.52" x2="219.018" y2="135.65"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="198.063" y1="148.814" x2="195.623" y2="143.333"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="177.862" y1="160.566" x2="174.335" y2="155.712"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="160.545" y1="176.262" x2="156.087" y2="172.246"></line>
+        <line id="40R" class="mark" fill="none" stroke="#fff" stroke-miterlimit="10" x1="149.871" y1="198.214" x2="141.675" y2="192.213"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="137.436" y1="216.596" x2="131.729" y2="214.741"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="132.653" y1="239.472" x2="126.685" y2="238.843"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="132.73" y1="262.843" x2="126.762" y2="263.468"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="137.664" y1="285.688" x2="131.958" y2="287.539"></line>
+        <line id="0R" class="mark" fill="none" stroke="#fff" stroke-miterlimit="10" x1="150.24" y1="304.006" x2="142.043" y2="310.004"></line>
+        <line id="99R" class="mark" fill="none" stroke="#fff" stroke-miterlimit="10" x1="337.868" y1="303.367" x2="346.063" y2="309.367"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="350.303" y1="284.986" x2="356.008" y2="286.84"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="355.087" y1="262.11" x2="361.052" y2="262.737"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="355.355" y1="238.781" x2="361.323" y2="238.153"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="350.422" y1="215.864" x2="356.129" y2="214.01"></line>
+        <line id="90R" class="mark" fill="none" stroke="#fff" stroke-miterlimit="10" x1="337.833" y1="197.474" x2="346.029" y2="191.474"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="327.004" y1="175.545" x2="331.463" y2="171.529"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="309.543" y1="159.905" x2="313.07" y2="155.049"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="289.212" y1="148.237" x2="291.652" y2="142.753"></line>
+        <line fill="none" stroke="#fff" stroke-miterlimit="10" x1="266.9" y1="141.05" x2="268.145" y2="135.179"></line>
+        <g>
+            <image class="imgSvg" id="60Img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/round_index.png" x="230" y="126" height="30px" width="30px"></image>
+            <image class="imgSvg" id="40Img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/round_index.png" x="141" y="192" height="30px" width="30px" transform="rotate(300,142,208)"></image>
+            <image class="imgSvg" id="0Img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/round_index.png" x="142" y="310" height="30px" width="30px" transform="rotate(240,148,318)"></image>
+            <image class="imgSvg" id="99Img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/round_index.png" x="346.063" y="309.367" height="30px" width="30px" transform="rotate(120,356,309)"></image>
+            <image class="imgSvg" id="90Img" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="images/round_index.png" x="346.063" y="191" height="30px" width="30px" transform="rotate(65,357,185)"></image>
+        </g>
+        <rect x="320.699" y="188.474" fill="none" width="17.202" height="26.267"></rect>
+        <text transform="matrix(1 0 0 1 310.6987 206.9229)" fill="#7BDCF2" font-family="'Futura-Medium'" font-size="18" id="90Temp"  class="tempText" data-per="75" data-temp="90">90</text>
+        <rect x="319.699" y="290.242" fill="none" width="17.202" height="23.557"></rect>
+        <text transform="matrix(1 0 0 1 310.6987 308.6914)" fill="#7BDCF2" font-family="'Futura-Medium'" font-size="18" id="99Temp" class="tempText" data-per="100" data-temp="99">99</text>
+        <rect x="151.066" y="287.539" fill="none" width="17.726" height="25.203"></rect>
+        <text transform="matrix(1 0 0 1 158.0664 305.9883)" fill="#7BDCF2" font-family="'Futura-Medium'" font-size="18" id="0Temp" class="tempText" data-per="0" data-temp="0">常温</text>
+        <rect x="149.066" y="191.474" fill="none" width="36.554" height="27.122"></rect>
+        <text transform="matrix(1 0 0 1 158.0664 209.9229)" fill="#7BDCF2" font-family="'Futura-Medium'" font-size="18" id="40Temp" class="tempText" data-per="25" data-temp="40">40</text>
+        <rect x="225.723" y="144.514" fill="none" width="37.029" height="29.25"></rect>
+        <text transform="matrix(1 0 0 1 232.7227 168.9639)" fill="#7BDCF2" font-family="'Futura-Medium'" font-size="18" id="60Temp" class="tempText" data-per="50" data-temp="60">60</text>
+    </g> -->
+    <g>
+        <text x="<%=infoX%>" y="<%=infoY%>" class="txt" id="txt_mark"><%- infoTxt%></text>
+        <text x="<%=tempX%>" y="<%=tempY%>" class="temp" id="TempSet"><%=tdsVal%></text>
+        <circle cx="<%=signalX%>" cy="<%=signalY%>" r="15" fill="#FFF000"></circle>
+        <text x="<%=signalX-7%>" y="<%=signalY+5%>" fill="#4DB499"><%=level%></text>
+        <text x="<%=tdsX%>" y="<%=tdsY%>" class="txt tds"><tspan fill="#088FC1">原水质TDS</tspan><tspan font-weight="bold" fill="#ED7212" dx="8"><%= TDSIn%></tspan></text>
+        
+        <!-- <text x="<%=tempX%>" y="<%=tempY%>" class="temp" id="TempSet"><%- tempVal%></text> -->
+        <!-- <text x="<%=tdsX%>" y="<%=tdsY%>" class="txt tds">出水TDS：<%=tdsVal%>ppmm</text> -->
+        <!-- <rect x="<%=rectX%>" y="<%=rectY%>" ry="5" width="120" height="29.25" class="rect"></rect> -->
+    </g>
+</svg>

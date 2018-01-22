@@ -1,0 +1,33 @@
+	<div class="total clear">
+	<div class="total_circle fl">
+	<svg width="100%" height="100%" version="1.1" id = "svg1"
+		xmlns="http://www.w3.org/2000/svg" class = "svg">
+		<g>
+		<circle cx = "50%" cy = "16.5%" r = "4" fill = "white">
+		</g>
+		<g>
+		<circle cx = "50%" cy = "49.5%" r = "4" fill = "white">
+		</g>
+		<g>
+		<circle cx = "50%" cy = "82.5%" r = "4"  fill = "white">
+		</g>
+		</svg>
+	</div>
+	<div class="total_water fl">
+		<ul>
+			<li>今日净水量：<span><%= day %>L</span></li>
+			<li>本月净水量：<span><%= mon %>L</span></li>
+			<li>总净水量：<span><%= total %>L</span></li>
+		</ul>
+	</div></div>
+	<div class="chart_show">
+		<p class="DayMonth_title">每日净水量</p>
+		<p class="chockTime">2015年10月</p>
+		<div class="DMchart">
+			<div id="chartDraw" class = "chartDraw"></div>
+			<p>L /日</p>
+		</div>
+	</div>
+		<div class="D_M" id= "D_M">
+		<a href="javascript:;" class = "dates fl on">日</a><a href="javascript:;" class = "months fl">月</a>
+		</div>

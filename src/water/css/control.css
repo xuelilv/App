@@ -1,0 +1,523 @@
+#views {
+  width: 100%;
+  height: 100%;
+}
+
+@font-face {
+  font-family: defineFont;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/helveticaneue_ultlt.ttf") format("truetype");
+}
+a:active {
+  color: #58a5f4;
+}
+.animation{
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+}
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0,-100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+}
+
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+}
+#control {
+  width: 100%;
+  height: 100%;
+  background: url("../images/bg.png") no-repeat 50%;
+  background-size: 100% 100%;
+}
+#control .alert{
+  display:none;
+  height: 4rem;
+  overflow: hidden;
+  background: #B63737;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+#control .txtAn{
+  height: 4rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+#control .alert p{
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+#control .clear{
+  height: 5rem;
+}
+#control .headWrap{
+  margin-top: 1rem;
+}
+#control .lock{
+  background: url("../images/home_icon_lock.png") no-repeat 85% 50%;
+  background-size: 9%;
+}
+#control .deviceName {
+  height: 3.5rem;
+  width: 50%;
+  background-color: #0073B5;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-radius: 20px;
+  line-height: 3.5rem;
+  color: #fff;
+}
+
+#control .deviceName span {
+  margin-left: -1.5rem;
+}
+
+#control .deviceName svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0;
+  margin-left: 1.2rem;
+  float: left;
+}
+
+#control .deviceName .signalState {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+#control .deviceName .hasSignal {
+  fill: #ddd;
+}
+#control .imgSvg{
+  display: none;
+}
+#control .deviceName .noSignal {
+  fill: none;
+}
+
+#control .txt, #control .temp, #control .signal {
+  fill: #fff;
+  font-size: 14px;
+  text-anchor: middle;
+}
+
+#control .temp {
+  font-size: 70px;
+  font-family: defineFont;
+}
+
+#control .tds {
+  font-size: 12px;
+}
+
+#control .rect {
+  fill: none;
+  stroke: #fff;
+}
+
+#control .polygon {
+  fill: #fff;
+}
+
+#control .signal {
+  fill: #FFE500;
+}
+
+#control .innerCir {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+#control #tdsInfo {
+  height: 10rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+#control #tdsInfo #Tds, #control #tdsInfo #waterInfo {
+  float: left;
+  width: 50%;
+}
+
+#control #tdsInfo .currTds, #control #tdsInfo .water {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+#control #tdsInfo .currTds:before {
+  content: 'TDS';
+  font-size: 1.8rem;
+  margin-left: -1rem;
+  margin-right: .8rem;
+  font-weight: normal;
+}
+
+#control #tdsInfo .water:after {
+  content: 'L';
+  font-size: 1.8rem;
+  margin-left: .2rem;
+}
+
+#control #waterChart {
+  height: 56%;
+}
+
+#control #PieCir {
+  fill: none;
+  stroke: #1CF4FF;
+  stroke-width: 2px;
+}
+
+#control .cir {
+  stroke: #3DB2DF;
+  stroke-width: 2px;
+}
+
+#control .oldTds{
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+#control .foot{
+  position: absolute;
+  bottom: .7rem;
+  width: 100%;
+  color: #fff;
+}
+#control .foot div{
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+#control .foot div p:nth-child(1){
+  font-size: 2rem;
+}
+#control .oldTds span{
+  font-size: 2rem;
+  color: #FFF700;
+}
+#control #waterState {
+  height: 3.5rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid #ddd;
+  line-height: 3.5rem;
+  padding-left: 1.5rem;
+  font-size: 1.5rem;
+}
+#devices{
+  height: 100%;
+  background-color: #E9E9E9;
+  padding-top: 1.5rem;
+}
+#devices .device {
+  height: 4rem;
+  background-color: #fff;
+}
+#devices .deviceInfo{
+  width: 100%;
+  height: 100%;
+}
+#devices .device .selectImg{
+  float: left;
+  width: 10%;
+  height: 100%;
+  background: url("../images/select_icon_2.png") no-repeat 50%;
+  background-size: 70%;
+  margin-left: 5%;
+}
+#devices .device .selected{
+  background: url("../images/select_icon_1.png") no-repeat 50%;
+  background-size: 70%;
+}
+#devices .device .view{
+  float: left;
+  width: 80%;
+  margin-left: 3%;
+  border-bottom: 1px solid #D2E5F3;
+  background: url("../images/list_arrow.png") no-repeat 98% 50%;
+  background-size: 6%;
+}
+#devices .device .name {
+  float: left;
+  line-height: 4rem;
+  color: #2684CA
+}
+
+#devices .device .btn {
+  float: right;
+  line-height: 4rem;
+  margin-right: 10%;
+}
+
+#detail {
+  width: 100%;
+  height: 100%;
+}
+#detail .img,#detail .top,#detail .name,#detail .btn{
+  float: left;
+  width: 100%;
+}
+#detail .top{
+  height: 80%;
+  background-color: #E9E9E9;
+}
+#detail .top .wrapper{
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+}
+#detail .img {
+  height: 45%;
+  text-align: center;
+  margin: 50px 0 30px 0;
+}
+#detail .img img{
+  width: 100%;
+  height: 200px;
+}
+#detail .name {
+  height: 20%;
+  text-align: center;
+}
+
+#detail .name p {
+  line-height: 3rem;
+  color:#1775C5;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+#detail .name .input{
+  width: 100%;
+  height: 3rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+}
+#detail .btn{
+  margin-top: 2rem;
+}
+#detail .del {
+  text-align: center;
+  height: 4rem;
+  width: 60%;
+  margin: 0 auto;
+  color: #1775C5;
+  border: 1px solid #1775C5;
+  border-radius: 5px;
+  line-height: 4rem;
+}
+
+#filterHealth{
+  height:100%;
+  width:100%;
+  background-color: #0076c9;
+}
+#filterHealth .displayBox{
+  display: -webkit-box;
+  display: box;
+  display:-moz-box;
+}
+#filterHealth .boxFlex{
+  box-flex:1;
+  -webkit-box-flex:1;
+  -moz-box-flex:1;
+}
+#filterHealth #allFilter{
+  width: 80%;
+  margin-left: 15%;
+}
+#filterHealth .filter{
+  box-align:center;
+  -webkit-box-align:center;
+  -moz-box-align:center;
+  -webkit-box-orient:vertical;
+}
+#filterHealth .filter .item{
+  border:2px solid #55a9dc;
+  border-radius: 8px;
+  height:150px;
+  width:40px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #1ae9fa;
+  overflow:hidden;
+  z-index:-1;
+}
+#filterHealth .boxShadow{
+  box-shadow: 0 0 10px #fff;
+  -webkit-box-shadow: 0 0 10px #fff;
+  -moz-box-shadow: 0 0 10px #fff;
+}
+#filterHealth .item  .itemSpan{
+  display: block;
+  width: 100%;
+  height: 90%;
+  background-color: #007cc9;
+}
+#filterHealth .filterHealthTitle{
+  padding-top:1rem;
+  padding-bottom:2rem;
+  width:90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+#filterHealth .healthState{
+  color: #cfdae9;
+  font-size: 2rem;
+  margin-bottom:1rem;
+}
+#filterHealth .spanLine{
+  color: #cfdae9;
+  font-size: 1.8rem;
+}
+#filterHealth #total,#filterHealth .unit{
+  color: yellow;
+  font-size: 1.8rem;
+}
+#filterHealth .num1{left:24%;}
+#filterHealth .num2{left:44%;}
+#filterHealth .num3{left:64%}
+#filterHealth .num4{left:84%;}
+#filterHealth .numPosition{
+  position:absolute;
+  color:#fff;
+  font-size:1.8rem;
+  padding-top:2rem;
+}
+#filterHealth .volume{padding-top:1rem;}
+#filterHealth .volume div{
+  text-align: center;
+  color:#cfdae9;
+}
+#filterHealth .volumeNum{font-size: 2rem;}
+#filterHealth .volumeNum{font-size: 1.8rem;}
+#filterHealth .volumeTableTitle{
+  margin-top:-3.5rem;
+  color:#cfdae9;
+  font-size:1.5rem;
+  text-indent:5px;
+}
+#filterHealth .filterMsg{
+  width:80%;
+  margin-left:16%;
+  padding-top:1rem;
+  font-size: 1.5rem;
+  color:#fff;
+  letter-spacing: 2px;
+}
+#filterHealth .resetBg{
+  position:fixed;
+  height:5rem;
+  width:100%;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color:#fff;
+}
+#filterHealth #resetBtn{
+  height:3rem;
+  width:60%;
+  line-height: 3rem;
+  margin-left:20%;
+  margin-top:1rem;
+  border:1px solid #2c84ca;
+  border-radius: 10px;
+  color:#2c84ca;
+  font-size: 1.8rem;
+  text-align: center;
+}
+#filterHealth .showMsg{display:none;}
+#popUpBg{
+  position:fixed;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+  background-color:rgba(0,0,0,0.3);
+}
+#popUpBg .popUpWindow{
+  height: 13rem;
+  width:70%;
+  margin-left:15%;
+  margin-top:40%;
+  background-color: #fff;
+  border-radius: 10px
+}
+#popUpBg .popBtn{
+  height:4rem;
+  line-height:4rem;
+  border-top:1px solid #f1f1f1;
+}
+#popUpBg .popBtn div{text-align: center;font-size:1.8rem;}
+#popUpBg .lines{
+  height: 9rem;
+  font-size: 1.6rem;
+  -webkit-box-orient:vertical;
+}
+#popUpBg .lineOne,#popUpBg .lineTwo{text-align: center;}
+#popUpBg .lineOne{padding-top: 3.5rem;}
+#popUpBg .cancelBtn{color:#646464;border-right:1px solid #f1f1f1;}
+#popUpBg .sureBtn{color:#1980c9;}

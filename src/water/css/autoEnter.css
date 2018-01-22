@@ -1,0 +1,10 @@
+
+.view_autoEnter{width: 100%;height: 100%;position: relative;overflow: hidden;background: #e9e9e9}
+.view_autoEnter p{margin-top: 10%;font-size: 1.6rem;margin-left: 10%;color: #2585c9}
+.view_autoEnter input{border:1px solid #ddd;width: 80%;height: 42px;margin:0.5rem 0 2rem 10%;padding-left: 2%;
+border-radius: 6px 6px;-webkit-border-radius:6px 6px;}
+.view_autoEnter .save_btn{margin-top: 80%;width: 80%;margin-left: 10%;margin-bottom: 5%;background: #e9e9e9}
+.view_autoEnter .save_btn a{background: white}
+
+
+

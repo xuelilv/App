@@ -1,0 +1,2 @@
+/*TMODJS:{"version":2,"md5":"8f7c5dca7d493c148b114fc9e851e4e4"}*/
+define(["./template",""],function(a){return a("detail",function(a){"use strict";var b=this,c=(b.$helpers,b.$escape),d=a.name,e="";return e+='<div id="detail"> <div class="img"><img src="#" alt=""/></div> <div class="name"> <p>\u8bbe\u5907\u540d\u79f0</p> <p>',e+=c(d),e+='</p> </div> <div class="del">\u5220\u9664\u8bbe\u5907</div> </div>',new String(e)})});
