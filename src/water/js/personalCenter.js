@@ -10,12 +10,14 @@ define(['text!../html/personalCenter.html', 'drawImg'], function(html, drawImg) 
 
         initialize: function() {
             var _this = this;
-            this.model.fetch({
-                success: function() {
-                    App.closeToast();
-                    _this.render();
-                }
-            });
+            App.closeToast();
+            _this.render();
+            // this.model.fetch({
+            //     success: function() {
+            //         App.closeToast();
+            //         _this.render();
+            //     }
+            // });
         },
 
         render: function() {

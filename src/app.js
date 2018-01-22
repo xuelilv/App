@@ -115,6 +115,7 @@ class Index extends React.Component {
       <View>
         <Btn url='md' title='美的电风扇' navigation={this.props.navigation} />
         <Btn url='airmate' title='自定义折线图' navigation={this.props.navigation} />
+        <Btn url='water' title='滴滴山泉' navigation={this.props.navigation} />
       </View>
     );
   }
@@ -136,12 +137,14 @@ class MyWebView extends React.Component {
       url = 'file:///android_asset/T0xFA/controlPanel.html';
     }else if(type === 'airmate') {
       url = 'file:///android_asset/airmate/index.html';
+    }else if(type === 'water') {
+      url = 'https://doll-preproduction.allpaycloud.cn/management_sys/water/index.html#control';
     }
     
     return (
       <WebView 
           ref='webViewRef'
-          source={{uri: url}}
+          source={{uri: url, headers: {'Access-Control-Allow-Origin': '*'}}}
           javaScriptEnabled={true}
           domStorageEnabled={true}
           decelerationRate="normal"

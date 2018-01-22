@@ -164,28 +164,28 @@ define(['text!../html/control.html', 'text!../html/markings.html'], function(tpl
             var _this = this;
             var _tempEl = document.getElementById("TempSet");
             if (did !== undefined && temp !== undefined) {
-                $.ajax({
-                    url: "api/purifictionWork",
-                    type: "POST",
-                    data: {
-                        clientId: App.getClientId(),
-                        purifierId: did,
-                        tempSet: temp
-                    },
-                    async: true,
-                    success: function(res) {
-                        if (res.responseCode == 200) {
-                            App.closeToast();
-                            _this.animation(per);
-                            _$("#txt_mark").text(TEMPANDTEXT[temp]);
-                            _tempEl.textContent = temp;
-                        } else {
-                            App.closeToast();
-                            App.showDia("alertDia animated bounceIn", "设备异常！");
-                            _$("#" + _tempEl.textContent + "Img").css("display", "block").siblings().css("display", "none");
-                        }
-                    }
-                });
+                // $.ajax({
+                //     url: "api/purifictionWork",
+                //     type: "POST",
+                //     data: {
+                //         clientId: App.getClientId(),
+                //         purifierId: did,
+                //         tempSet: temp
+                //     },
+                //     async: true,
+                //     success: function(res) {
+                //         if (res.responseCode == 200) {
+                //             App.closeToast();
+                //             _this.animation(per);
+                //             _$("#txt_mark").text(TEMPANDTEXT[temp]);
+                //             _tempEl.textContent = temp;
+                //         } else {
+                //             App.closeToast();
+                //             App.showDia("alertDia animated bounceIn", "设备异常！");
+                //             _$("#" + _tempEl.textContent + "Img").css("display", "block").siblings().css("display", "none");
+                //         }
+                //     }
+                // });
             }
         };
         ControlPer.prototype.hightLightPoint = function(temp) {
@@ -242,25 +242,25 @@ define(['text!../html/control.html', 'text!../html/markings.html'], function(tpl
             this.setLoc();
         },
         setLoc: function() {
-            $.ajax({
-                url: App.BaseUrl + 'api/getPurificationList',
-                type: 'POST',
-                data: { 'clientId': App.getClientId() },
-                async: true,
-                success: function(res) {
-                    if (res !== null) {
-                        console.log(res);
-                        if (res.responseCode == "200") {
-                            loc.setItem("list", JSON.stringify(res));
-                        } else { //如果responseCode不是200则跳到绑定提醒页
-                            // Backbone.history.navigate("noBind", {
-                            //     trigger: true,
-                            //     replace: false
-                            // });
-                        }
-                    }
-                }
-            });
+            // $.ajax({
+            //     url: App.BaseUrl + 'api/getPurificationList',
+            //     type: 'POST',
+            //     data: { 'clientId': App.getClientId() },
+            //     async: true,
+            //     success: function(res) {
+            //         if (res !== null) {
+            //             console.log(res);
+            //             if (res.responseCode == "200") {
+            //                 loc.setItem("list", JSON.stringify(res));
+            //             } else { //如果responseCode不是200则跳到绑定提醒页
+            //                 // Backbone.history.navigate("noBind", {
+            //                 //     trigger: true,
+            //                 //     replace: false
+            //                 // });
+            //             }
+            //         }
+            //     }
+            // });
         },
         render: function() {
             var json = { id: 1, isOnline: 'y', signal: 3, TDSIn: 200, TDSOut: 80, dayWater: 300, tempSet: 50, name: '测试' };
@@ -285,32 +285,32 @@ define(['text!../html/control.html', 'text!../html/markings.html'], function(tpl
         setWebSocket: function() {
             var _this = this;
             if (WebSocket) {
-                ws = new WebSocket('ws://rinland.xtremeprog.com:18040/wechat/send.ws/' + did);
-                ws.onopen = function() {
-                    console.log('open');
-                    ws.send(did);
-                };
-                ws.onmessage = function(e) {
-                    console.log('message', e.data);
-                    /*var pushData = JSON.parse(e.data),
-                        isChange = pushData.needChange;
-                    if(isChange == "y"){
-                        _this.setWarn(pushData);
-                    }else{
-                        if(inter !== null){
-                            clearInterval(inter);
-                            _this.Alert.hide();
-                        }
-                    }*/
-                    _this.setWarn(e.data);
-                    // ws.close();
-                };
-                ws.onclose = function() {
-                    console.log('close');
-                };
-                ws.onerror = function(evt) {
-                    console.log("error");
-                };
+                // ws = new WebSocket('ws://rinland.xtremeprog.com:18040/wechat/send.ws/' + did);
+                // ws.onopen = function() {
+                //     console.log('open');
+                //     ws.send(did);
+                // };
+                // ws.onmessage = function(e) {
+                //     console.log('message', e.data);
+                //     /*var pushData = JSON.parse(e.data),
+                //         isChange = pushData.needChange;
+                //     if(isChange == "y"){
+                //         _this.setWarn(pushData);
+                //     }else{
+                //         if(inter !== null){
+                //             clearInterval(inter);
+                //             _this.Alert.hide();
+                //         }
+                //     }*/
+                //     _this.setWarn(e.data);
+                //     // ws.close();
+                // };
+                // ws.onclose = function() {
+                //     console.log('close');
+                // };
+                // ws.onerror = function(evt) {
+                //     console.log("error");
+                // };
             } else {
                 if (typeof(window.Worker) !== "undefined") {
                     if (typeof(work) == "undefined") {
