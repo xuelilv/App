@@ -50,10 +50,10 @@ export default class App extends React.Component {
                     onTouchStart={()=>this._onTouchStart()}
                     onTouchMove={()=>console.log('onTouchMove')}
                     onTouchEnd={()=>this._onTouchEnd()}
-                    onScroll={()=>this._onScroll()}
+                    onScroll={(e)=>this._onScroll(e)}
                     ref={(scrollView) => { this._scrollView = scrollView;}}>
 
-                <Animated.View style={{flexDirection:'row'}}>{ }</Animated.View>
+                <Animated.View style={{flexDirection:'row'}}>{images}</Animated.View>
                 </ScrollView>
                 <View style={{flexDirection:'row',position:'absolute',top:115,left:center}}>{circles}</View>
             </View>
@@ -67,16 +67,15 @@ export default class App extends React.Component {
 
     _onTouchEnd(){
         // 先滑动到指定index位置，再开启定时任务
+        console.log(this._index);
         this._scrollView.scrollTo({x:this._index * screenWidth},true);
         // 重置小圆点指示器
         this._refreshFocusIndicator();
         this._runFocusImage();
     }
 
-    _onScroll(){
-        //this._contentOffsetX = this._scrollView.contentOffset.x;
-        //this._index = Math.round(this._contentOffsetX / screenWidth);
-        this._index = 1;
+    _onScroll(e){
+        this._index = Math.round(e.nativeEvent.contentOffset.x / screenWidth);
     }
 
     _runFocusImage(){
@@ -102,7 +101,7 @@ export default class App extends React.Component {
         this.setState({selectedImageIndex:this._index});
     }
 
-    _showToast(i) {
+    _showLog(i) {
         //显示的内容
         var message = '点击: ' + i;
         console.log(message);
