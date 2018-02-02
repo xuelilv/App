@@ -10,7 +10,7 @@ import Dimensions from 'Dimensions';
 
 // 屏幕宽度
 var screenWidth = Dimensions.get('window').width;
-export default class App extends React.Component {
+export default class FocusView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
