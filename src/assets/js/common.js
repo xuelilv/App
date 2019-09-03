@@ -192,6 +192,200 @@
                 }
                 return to;
             },
+            throttle: function (func, wait, options) {
+                /* options的默认值
+                 *  表示首次调用返回值方法时，会马上调用func；否则仅会记录当前时刻，当第二次调用的时间间隔超过wait时，才调用func。
+                 *  options.leading = true;
+                 * 表示当调用方法时，未到达wait指定的时间间隔，则启动计时器延迟调用func函数，若后续在既未达到wait指定的时间间隔和func函数又未被调用的情况下调用返回值方法，则被调用请求将被丢弃。
+                 *  options.trailing = true; 
+                 * 注意：当options.trailing = false时，效果与上面的简单实现效果相同
+                 */
+                var context, args, result;
+                var timeout = null;
+                var previous = 0;
+                if (!options) options = {};
+                var later = function () {
+                    previous = options.leading === false ? 0 : new Date().getTime();
+                    timeout = null;
+                    result = func.apply(context, args);
+                    if (!timeout) context = args = null;
+                };
+                return function () {
+                    var now = new Date().getTime();
+                    if (!previous && options.leading === false) previous = now;
+                    // 计算剩余时间
+                    var remaining = wait - (now - previous);
+                    context = this;
+                    args = arguments;
+                    // 当到达wait指定的时间间隔，则调用func函数
+                    if (remaining <= 0 || remaining > wait) {
+                        if (timeout) {
+                            clearTimeout(timeout);
+                            timeout = null;
+                        }
+                        previous = now;
+                        result = func.apply(context, args);
+                        if (!timeout) context = args = null;
+                    } else if (!timeout && options.trailing !== false) {
+                        // options.trailing=true时，延时执行func函数
+                        timeout = setTimeout(later, remaining);
+                    }
+                    return result;
+                };
+            },
+            debounce: function (func, wait, immediate) {
+                // immediate默认为false
+                var timeout, args, context, timestamp, result;
+
+                var later = function () {
+                    // 当wait指定的时间间隔期间多次调用debounce返回的函数，则会不断更新timestamp的值，导致last < wait && last >= 0一直为true，从而不断启动新的计时器延时执行func
+                    var last = new Date().getTime() - timestamp;
+
+                    if (last < wait && last >= 0) {
+                        timeout = setTimeout(later, wait - last);
+                    } else {
+                        timeout = null;
+                        if (!immediate) {
+                            result = func.apply(context, args);
+                            if (!timeout) context = args = null;
+                        }
+                    }
+                };
+
+                return function () {
+                    context = this;
+                    args = arguments;
+                    timestamp = new Date().getTime();
+                    // 第一次调用该方法时，且immediate为true，则调用func函数
+                    var callNow = immediate && !timeout;
+                    // 在wait指定的时间间隔内首次调用该方法，则启动计时器定时调用func函数
+                    if (!timeout) timeout = setTimeout(later, wait);
+                    if (callNow) {
+                        result = func.apply(context, args);
+                        context = args = null;
+                    }
+
+                    return result;
+                };
+            },
+            /**  
+             * 将以base64的图片url数据转换为Blob  
+             * @param urlData  
+             * 用url方式表示的base64图片数据  
+             */
+            convertBase64UrlToBlob: function (urlData) {
+                var bytes = window.atob(urlData.split(',')[1]); //去掉url的头，并转换为byte  
+
+                //处理异常,将ascii码小于0的转换为大于0  
+                var ab = new ArrayBuffer(bytes.length);
+                var ia = new Uint8Array(ab);
+                for (var i = 0; i < bytes.length; i++) {
+                    ia[i] = bytes.charCodeAt(i);
+                }
+
+                return new Blob([ab], {
+                    type: 'image/png'
+                });
+            },
+            fixClassList() {
+                if (!("classList" in document.documentElement)) {
+                    Object.defineProperty(HTMLElement.prototype, 'classList', {
+                        get: function () {
+                            var self = this;
+
+                            function update(fn) {
+                                return function (value) {
+                                    var classes = self.className.split(/\s+/g),
+                                        index = classes.indexOf(value);
+
+                                    fn(classes, index, value);
+                                    self.className = classes.join(" ");
+                                }
+                            }
+
+                            return {
+                                add: update(function (classes, index, value) {
+                                    if (!~index) classes.push(value);
+                                }),
+
+                                remove: update(function (classes, index) {
+                                    if (~index) classes.splice(index, 1);
+                                }),
+
+                                toggle: update(function (classes, index, value) {
+                                    if (~index) {
+                                        classes.splice(index, 1);
+                                    } else {
+                                        classes.push(value);
+                                    }
+                                }),
+
+                                contains: function (value) {
+                                    return !!~self.className.split(/\s+/g).indexOf(value);
+                                },
+
+                                item: function (i) {
+                                    return self.className.split(/\s+/g)[i] || null;
+                                }
+                            };
+                        }
+                    });
+                }
+            },
+            fireEvent(node, eventName) {
+                // Make sure we use the ownerDocument from the provided node to avoid cross-window problems
+                var doc, event;
+                if (node.ownerDocument) {
+                    doc = node.ownerDocument;
+                } else if (node.nodeType == 9) {
+                    // the node may be the document itself, nodeType 9 = DOCUMENT_NODE
+                    doc = node;
+                } else {
+                    throw new Error("Invalid node passed to fireEvent: " + node.id);
+                }
+
+                if (node.dispatchEvent) {
+                    // Gecko-style approach (now the standard) takes more work
+                    var eventClass = "";
+
+                    // Different events have different event classes.
+                    // If this switch statement can't map an eventName to an eventClass,
+                    // the event firing is going to fail.
+                    switch (eventName) {
+                        case "click": // Dispatching of 'click' appears to not work correctly in Safari. Use 'mousedown' or 'mouseup' instead.
+                        case "mousedown":
+                        case "mouseup":
+                            eventClass = "MouseEvents";
+                            break;
+
+                        case "focus":
+                        case "change":
+                        case "blur":
+                        case "select":
+                            eventClass = "HTMLEvents";
+                            break;
+
+                        default:
+                            eventClass = "HTMLEvents";
+                            break;
+                    }
+                    event = doc.createEvent(eventClass);
+
+                    var bubbles = eventName == "change" ? false : true;
+                    event.initEvent(eventName, bubbles, true); // All events created as bubbling and cancelable.
+
+                    event.synthetic = true; // allow detection of synthetic events
+                    // The second parameter says go ahead with the default action
+                    node.dispatchEvent(event, true);
+                    return event;
+                } else if (node.fireEvent) {
+                    // IE-old school style
+                    event = doc.createEventObject();
+                    event.synthetic = true; // allow detection of synthetic events
+                    node.fireEvent("on" + eventName, event);
+                    return event;
+                }
+            },
             /**
              * 合并两数组并去重
              * @param arr1
