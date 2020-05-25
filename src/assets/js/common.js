@@ -514,31 +514,86 @@
                 var u = navigator.userAgent;
                 return !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
             },
+            // 树结构转一纬数组  tree 为当前树的数据源  key为父节点key值 children
+            treeTransArray： function (nodes, children = 'children', parent_Id = 'parentId', parentId = '') {
+              if (!nodes) return []
+              var childKey = children
+              var r = []
+              if (nodes instanceof Array) {
+                for (var item of nodes) {
+                  var node = {}
+                  for (var key in item) {
+                    if (key !== childKey) {
+                      node[key] = item[key]
+                    }
+                  }
+                  node[parent_Id] = parentId
+                  r.push(node)
+                  if (item[childKey]) {
+                    r = r.concat(treeTransArray(item[childKey], childKey, parent_Id, item.id))
+                  }
+                }
+              } else {
+                r.push(nodes)
+                if (nodes[childKey]) {
+                  r = r.concat(treeTransArray(nodes[childKey]))
+                }
+              }
+              return r
+            },
             /**
-             * 格式化设备名称
-             * @param {Object} result
+             *
+             * @param {String} name 导出的excel名称
+             * @param {Array} tableData 数据值
+             * @param {Array} tableColumns 数据表头列名称
+             * @param {Array} valueKeyArr 数据表头列key值
              */
-            setDeviceName: function(result) {
-                var homemadeId = '001',
-                    deviceName = result.deviceName,
-                    deviceMark = result.deviceMark || '',
-                    deviceMac = '';
-                if (result.hasOwnProperty('homemadeId') && result.homemadeId !== null) {
-                    homemadeId = this.formatNumberByZero(parseInt(result.homemadeId) + '', 3);
+            exportToExcel: function(name = '数据表', tableData = [], tableColumns = [], valueKeyArr = []) {
+              let str = ''
+              // 列标题，逗号隔开，每一个逗号就是隔开一个单元格
+              for (let i = 0; i < tableColumns.length; i++) {
+                str += `${tableColumns[i] + '\t'},`
+              }
+              str += '\n'
+
+              // 增加\t为了不让表格显示科学计数法或者其他格式
+              for (let i = 0; i < tableData.length; i++) {
+                for (let j = 0; j < valueKeyArr.length; j++) {
+                  const nval = tableData[i][valueKeyArr[j]] || ''
+                  str += `${nval + '\t'},`
                 }
+                str += '\n'
+              }
 
-                deviceName = deviceName ? deviceName.substr(0, 3) : '';
+              // encodeURIComponent解决中文乱码
+              const uri = 'data:text/xls;charset=utf-8,\ufeff' + encodeURIComponent(str)
+              // 通过创建a标签实现
+              var link = document.createElement('a')
+              link.href = uri
+              // 对下载的文件命名
+              link.download = name + '.xls'
+              document.body.appendChild(link)
+              link.click()
+              document.body.removeChild(link)
+            },
+            // 字节大小转换
+            byteConvert: function (bytes) {
+              if (isNaN(bytes)) {
+                return ''
+              }
 
-                if (this.isString(result.deviceMac)) {
-                    deviceMac = result.deviceMac.substr(result.deviceMac.length - 5, 5);
-                }
+              const symbols = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+              let exp = Math.floor(Math.log(bytes) / Math.log(2))
+              if (exp < 1) {
+                exp = 0
+              }
+              const i = Math.floor(exp / 10)
+              bytes = bytes / Math.pow(2, 10 * i)
 
-                return {
-                    deviceMark: deviceMark,
-                    homemadeId: homemadeId,
-                    deviceName: deviceName,
-                    deviceMac: deviceMac
-                };
+              if (bytes.toString().length > bytes.toFixed(2).toString().length) {
+                bytes = bytes.toFixed(2)
+              }
+              return bytes + ' ' + symbols[i]
             },
             hidePhone: function(phoneStr) {
                 phoneStr = phoneStr + '';
